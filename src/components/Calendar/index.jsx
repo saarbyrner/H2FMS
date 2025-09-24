@@ -1,4 +1,4 @@
-import React, { useState, useRef, forwardRef } from 'react';
+import React, { useState, useRef, forwardRef, useEffect } from 'react';
 import FullCalendarComponent from './FullCalendarComponent';
 import { calendarStyles } from './styles';
 
@@ -41,8 +41,44 @@ const Calendar = forwardRef(({
     console.log('Dates rendered:', datesRenderInfo);
   };
 
+  // ResizeObserver to keep FullCalendar column widths in sync when layout changes
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!forwardedRef?.current) return;
+    const calendarApi = forwardedRef.current.getApi?.();
+    if (!calendarApi) return;
+
+    // Debounce with rAF to prevent rapid consecutive calls
+    let frameId = null;
+    const handleResize = () => {
+      if (frameId) cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        try {
+          calendarApi.updateSize();
+        } catch (e) {
+          // Silent fail – updateSize can throw if calendar unmounted mid-cycle
+          // console.debug('FullCalendar resize skipped', e);
+        }
+      });
+    };
+
+    // Prefer ResizeObserver for container width changes (e.g., nav collapse)
+    const observer = new ResizeObserver(handleResize);
+    if (containerRef.current) observer.observe(containerRef.current);
+
+    // Fallback: also listen to window resize
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', handleResize);
+      if (frameId) cancelAnimationFrame(frameId);
+    };
+  }, [forwardedRef]);
+
   return (
-    <div style={calendarStyles.pageContainer}>
+    <div ref={containerRef} style={calendarStyles.pageContainer}>
       <div style={calendarStyles.calendarWrapper}>
         <FullCalendarComponent
           onViewDidMount={handleViewChange}

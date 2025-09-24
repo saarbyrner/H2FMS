@@ -239,4 +239,35 @@
     "created_at": "2023-07-01T10:45:00Z",
     "updated_at": "2023-12-28T14:20:00Z"
   }
+  ,
+  {
+    "id": 9,
+    "firstname": "Sarah",
+    "lastname": "Brown",
+    "alias": "SB",
+    "date_of_birth": "1997-02-11",
+    "age": 28,
+    "gender": "Female",
+    "height": "172cm",
+    "weight": "60kg",
+    "country": "USA",
+    "position": "Endurance Athlete",
+    "position_group": "Endurance",
+    "squad_id": 3,
+    "squad_name": "Triathlon Squad",
+    "organisation_id": 1,
+    "is_active": true,
+    "is_removed": false,
+    "availability_status": "Available",
+    "rtp_date": null,
+    "performance_score": 90,
+    "market_value": "$1.0M",
+    "fitness_level": "Elite",
+    "injury_status": "Healthy",
+    "last_assessment": "2025-09-01",
+    "training_load": 7.9,
+    "wellbeing_score": 8.4,
+    "created_at": "2025-09-01T08:00:00Z",
+    "updated_at": "2025-09-01T08:00:00Z"
+  }
 ]

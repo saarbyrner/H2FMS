@@ -1,0 +1,387 @@
+{
+  "user": "Sarah Brown",
+  "week": {
+    "monday": {
+      "date": "Mon 27",
+      "summary": {
+        "calories": { "consumed": 3249, "target": 3331, "unit": "kcal" },
+        "carbs": { "consumed": 388, "target": 406, "unit": "g" },
+        "protein": { "consumed": 188, "target": 181, "unit": "g" },
+        "fat": { "consumed": 102, "target": 107, "unit": "g" }
+      },
+      "schedule": [
+        {
+          "type": "meal",
+          "title": "Breakfast",
+          "time": "08:30",
+          "nutrition": { "calories": 588, "carbs": 88, "protein": 46, "fat": 20 }
+        },
+        {
+          "type": "meal",
+          "title": "AM Snack",
+          "time": "10:00",
+          "nutrition": { "calories": 597, "carbs": 100, "protein": 47, "fat": 0 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch",
+          "time": "13:00",
+          "nutrition": { "calories": 723, "carbs": 87, "protein": 80, "fat": 13 }
+        },
+        {
+          "type": "meal",
+          "title": "Pre Workout",
+          "time": "16:00",
+          "nutrition": { "calories": 459, "carbs": 66, "protein": 43, "fat": 10 }
+        },
+        {
+          "type": "activity",
+          "title": "Stamina TTE",
+          "startTime": "16:30",
+          "endTime": "18:30",
+          "details": {
+            "notes": "Keep it controlled, choose non-rolling route so...",
+            "fueling": "45 g/hr",
+            "isTrainingPeaks": true
+          }
+        },
+        {
+          "type": "meal",
+          "title": "Post Workout Meal",
+          "time": "17:00",
+          "nutrition": { "calories": 700, "carbs": 90, "protein": 50, "fat": 20 }
+        },
+        {
+          "type": "meal",
+          "title": "Recovery",
+          "time": "19:00",
+          "nutrition": { "calories": 381, "carbs": 90, "protein": 16, "fat": 0 }
+        }
+      ]
+    },
+    "tuesday": {
+      "date": "Tue 28",
+      "summary": {
+        "calories": { "consumed": 2332, "target": 2531, "unit": "kcal" },
+        "carbs": { "consumed": 222, "target": 244, "unit": "g" },
+        "protein": { "consumed": 178, "target": 163, "unit": "g" },
+        "fat": { "consumed": 78, "target": 107, "unit": "g" }
+      },
+      "schedule": [
+        {
+          "type": "meal",
+          "title": "Pre Workout",
+          "time": "06:00",
+          "nutrition": { "calories": 303, "carbs": 31, "protein": 12, "fat": 13 }
+        },
+        {
+          "type": "activity",
+          "title": "22 Recovery Run",
+          "startTime": "07:00",
+          "endTime": "07:45",
+          "details": { "isTrainingPeaks": true }
+        },
+        {
+          "type": "meal",
+          "title": "Breakfast",
+          "time": "08:30",
+          "nutrition": { "calories": 603, "carbs": 76, "protein": 33, "fat": 19 }
+        },
+        {
+          "type": "meal",
+          "title": "Breakfast Option 2",
+          "time": "08:30",
+          "nutrition": { "calories": 551, "carbs": 66, "protein": 25, "fat": 21 }
+        },
+        {
+          "type": "meal",
+          "title": "AM Snack",
+          "time": "11:00",
+          "nutrition": { "calories": 244, "carbs": 26, "protein": 14, "fat": 2 }
+        },
+        {
+          "type": "meal",
+          "title": "AM Snack Option 2",
+          "time": "11:00",
+          "nutrition": { "calories": 284, "carbs": 11, "protein": 11, "fat": 1 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch",
+          "time": "13:30",
+          "nutrition": { "calories": 566, "carbs": 52, "protein": 33, "fat": 13 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch Option 2",
+          "time": "13:30",
+          "nutrition": { "calories": 527, "carbs": 52, "protein": 13, "fat": 6 }
+        },
+        {
+          "type": "meal",
+          "title": "PM Snack",
+          "time": "16:30",
+          "nutrition": { "calories": 244, "carbs": 26, "protein": 14, "fat": 2 }
+        }
+      ]
+    },
+    "wednesday": {
+      "date": "Wed 29",
+      "summary": {
+        "calories": { "consumed": 2981, "target": 2993, "unit": "kcal" },
+        "carbs": { "consumed": 407, "target": 382, "unit": "g" },
+        "protein": { "consumed": 160, "target": 160, "unit": "g" },
+        "fat": { "consumed": 76, "target": 96, "unit": "g" }
+      },
+      "schedule": [
+        {
+          "type": "meal",
+          "title": "Breakfast",
+          "time": "08:00",
+          "nutrition": { "calories": 882, "carbs": 124, "protein": 36, "fat": 21 }
+        },
+        {
+          "type": "meal",
+          "title": "Breakfast Option 2",
+          "time": "08:00",
+          "nutrition": { "calories": 853, "carbs": 124, "protein": 35, "fat": 6 }
+        },
+        {
+          "type": "activity",
+          "title": "Open Water Swim",
+          "startTime": "10:00",
+          "endTime": "10:30",
+          "details": { "fueling": "40 g/hr", "isTrainingPeaks": true }
+        },
+        {
+            "type": "meal",
+            "title": "Post-Swim Snack",
+            "time": "10:00",
+            "nutrition": { "calories": 276, "carbs": 68, "protein": 0, "fat": 0 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch",
+          "time": "13:00",
+          "nutrition": { "calories": 931, "carbs": 120, "protein": 47, "fat": 21 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch Option 2",
+          "time": "13:00",
+          "nutrition": { "calories": 854, "carbs": 120, "protein": 25, "fat": 13 }
+        },
+        {
+          "type": "meal",
+          "title": "PM Snack",
+          "time": "16:00",
+          "nutrition": { "calories": 335, "carbs": 39, "protein": 30, "fat": 16 }
+        },
+        {
+          "type": "meal",
+          "title": "PM Snack Option 2",
+          "time": "16:00",
+          "nutrition": { "calories": 331, "carbs": 39, "protein": 25, "fat": 16 }
+        },
+        {
+          "type": "meal",
+          "title": "Dinner",
+          "time": "18:00",
+          "nutrition": { "calories": 690, "carbs": 92, "protein": 47, "fat": 11 }
+        }
+      ]
+    },
+    "thursday": {
+      "date": "Thur 30",
+      "summary": {
+        "calories": { "consumed": 2369, "target": 2592, "unit": "kcal" },
+        "carbs": { "consumed": 257, "target": 264, "unit": "g" },
+        "protein": { "consumed": 148, "target": 163, "unit": "g" },
+        "fat": { "consumed": 83, "target": 107, "unit": "g" }
+      },
+      "schedule": [
+        {
+          "type": "activity",
+          "title": "Recovery Ride",
+          "startTime": "07:00",
+          "endTime": "07:45",
+          "details": { "isTrainingPeaks": true }
+        },
+        {
+          "type": "meal",
+          "title": "Breakfast",
+          "time": "08:30",
+          "nutrition": { "calories": 661, "carbs": 81, "protein": 36, "fat": 19 }
+        },
+        {
+            "type": "meal",
+            "title": "Breakfast Option 2",
+            "time": "08:30",
+            "nutrition": { "calories": 611, "carbs": 81, "protein": 28, "fat": 19 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch",
+          "time": "12:00",
+          "nutrition": { "calories": 611, "carbs": 49, "protein": 28, "fat": 41 }
+        },
+        {
+          "type": "meal",
+          "title": "Pre Workout",
+          "time": "13:15",
+          "nutrition": { "calories": 303, "carbs": 23, "protein": 24, "fat": 13 }
+        },
+        {
+          "type": "meal",
+          "title": "PM Snack",
+          "time": "15:00",
+          "nutrition": { "calories": 346, "carbs": 30, "protein": 16, "fat": 16 }
+        },
+        {
+          "type": "activity",
+          "title": "SRT Circuit",
+          "startTime": "17:00",
+          "endTime": "17:50",
+          "details": {
+            "notes": "Warm up | General 15 mins RAMP...",
+            "isTrainingPeaks": true
+          }
+        }
+      ]
+    },
+    "friday": {
+      "date": "Fri 31",
+      "summary": {
+        "calories": { "consumed": 0, "target": 2035, "unit": "kcal" },
+        "carbs": { "consumed": 0, "target": 247, "unit": "g" },
+        "protein": { "consumed": 0, "target": 147, "unit": "g" },
+        "fat": { "consumed": 0, "target": 82, "unit": "g" }
+      },
+      "schedule": [
+        {
+          "type": "note",
+          "title": "24hr Carb Load",
+          "time": null,
+          "details": { "notes": "Ready to fuel for tomorrow" }
+        },
+        {
+          "type": "meal",
+          "title": "Breakfast",
+          "time": "08:30",
+          "nutrition": { "calories": 796, "carbs": 117, "protein": 47, "fat": 16 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch",
+          "time": "13:00",
+          "nutrition": { "calories": 796, "carbs": 117, "protein": 47, "fat": 16 }
+        },
+        {
+          "type": "meal",
+          "title": "PM Snack",
+          "time": "16:00",
+          "nutrition": { "calories": 448, "carbs": 66, "protein": 30, "fat": 10 }
+        },
+        {
+          "type": "meal",
+          "title": "Dinner",
+          "time": "19:00",
+          "nutrition": { "calories": 796, "carbs": 117, "protein": 39, "fat": 16 }
+        },
+        {
+          "type": "meal",
+          "title": "Pre Bed Snack",
+          "time": "21:00",
+          "nutrition": { "calories": 448, "carbs": 66, "protein": 30, "fat": 10 }
+        }
+      ]
+    },
+    "saturday": {
+      "date": "Sat 01",
+      "summary": {
+        "calories": { "consumed": 0, "target": 2839, "unit": "kcal" },
+        "carbs": { "consumed": 0, "target": 561, "unit": "g" },
+        "protein": { "consumed": 0, "target": 144, "unit": "g" },
+        "fat": { "consumed": 0, "target": 82, "unit": "g" }
+      },
+      "schedule": [
+        {
+          "type": "meal",
+          "title": "Breakfast",
+          "time": "08:30",
+          "nutrition": { "calories": 597, "carbs": 112, "protein": 26, "fat": 2 }
+        },
+        {
+          "type": "activity",
+          "title": "City Sprint",
+          "startTime": "10:00",
+          "endTime": "11:30",
+          "details": {
+            "notes": "Leave nothing out there! It's race day!",
+            "fueling": "50 g/hr",
+            "isTrainingPeaks": true
+          }
+        },
+        {
+          "type": "meal",
+          "title": "Recovery",
+          "time": "12:00",
+          "nutrition": { "calories": 687, "carbs": 121, "protein": 32, "fat": 10 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch",
+          "time": "13:00",
+          "nutrition": { "calories": 805, "carbs": 120, "protein": 34, "fat": 20 }
+        },
+        {
+          "type": "meal",
+          "title": "PM Snack",
+          "time": "16:00",
+          "nutrition": { "calories": 446, "carbs": 82, "protein": 16, "fat": 4 }
+        },
+        {
+          "type": "meal",
+          "title": "Dinner",
+          "time": "19:00",
+          "nutrition": { "calories": 906, "carbs": 120, "protein": 34, "fat": 28 }
+        }
+      ]
+    },
+    "sunday": {
+      "date": "Sun 02",
+      "summary": {
+        "calories": { "consumed": 0, "target": 2034, "unit": "kcal" },
+        "carbs": { "consumed": 0, "target": 147, "unit": "g" },
+        "protein": { "consumed": 0, "target": 147, "unit": "g" },
+        "fat": { "consumed": 0, "target": 82, "unit": "g" }
+      },
+      "schedule": [
+        {
+          "type": "meal",
+          "title": "Breakfast",
+          "time": "08:30",
+          "nutrition": { "calories": 463, "carbs": 29, "protein": 44, "fat": 25 }
+        },
+        {
+          "type": "meal",
+          "title": "Lunch",
+          "time": "13:00",
+          "nutrition": { "calories": 618, "carbs": 59, "protein": 44, "fat": 23 }
+        },
+        {
+          "type": "meal",
+          "title": "PM Snack",
+          "time": "16:00",
+          "nutrition": { "calories": 244, "carbs": 37, "protein": 27, "fat": 12 }
+        },
+        {
+          "type": "meal",
+          "title": "Dinner",
+          "time": "19:00",
+          "nutrition": { "calories": 618, "carbs": 59, "protein": 44, "fat": 23 }
+        }
+      ]
+    }
+  }
+}

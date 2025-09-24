@@ -205,6 +205,11 @@
   color: #357ABD;
 }
 
+/* Today highlight */
+.fc .fc-day-today {
+  background-color: rgba(15, 40, 255, 0.1);
+}
+
 .fc .fc-daygrid-event {
   margin: 1px 0;
   border-radius: 3px;

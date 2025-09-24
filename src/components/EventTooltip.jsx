@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Box, Typography, Button, IconButton, Divider } from '@mui/material';
 import { Close, Edit, Delete, MoreVert, ContentCopy, Refresh } from '@mui/icons-material';
 
 const EventTooltip = ({ 
   event, 
   position, 
+  anchorRect,
   onClose, 
   onEdit, 
   onDelete, 
@@ -12,6 +13,49 @@ const EventTooltip = ({
   onDuplicate 
 }) => {
   if (!event) return null;
+
+  const tooltipRef = useRef(null);
+  const [adjustedPos, setAdjustedPos] = useState(position);
+
+  useLayoutEffect(() => {
+    const el = tooltipRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    let { x, y } = position; // starting values passed in
+
+    // If going off right/left adjust horizontally
+    if (x + rect.width + 8 > vw) x = vw - rect.width - 8;
+    if (x < 8) x = 8;
+
+    // Attempt vertical flip if overflow bottom
+    if (y + rect.height + 8 > vh && anchorRect) {
+      const flippedY = anchorRect.top - rect.height - 8; // place above anchor
+      if (flippedY >= 8) {
+        y = flippedY;
+      } else {
+        // Clamp inside viewport if still overflowing
+        y = Math.max(8, vh - rect.height - 8);
+      }
+    }
+
+    // If originally above and now off top, push down
+    if (y < 8) y = 8;
+
+    // Nudge if overlapping fixed nav bars (if any) - simple heuristic could be added later
+
+    setAdjustedPos({ x, y });
+  }, [position, anchorRect, event]);
+
+  // Close on Escape key
+  useLayoutEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose?.(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  // Prevent scroll bleed when wheel over tooltip if needed
 
   const { title, start, end, extendedProps, backgroundColor, borderColor } = event;
 
@@ -70,13 +114,24 @@ const EventTooltip = ({
   const timeRange = `${startTime} - ${endTime}`;
   const recurrenceInfo = getRecurrenceInfo(event);
 
+  const nutrition = extendedProps?.nutrition;
+  const fueling = extendedProps?.fueling || extendedProps?.activity?.fueling;
+  const activityDetails = extendedProps?.activity;
+  const dailySummary = extendedProps?.summary;
+
+  const pct = (consumed, target) => {
+    if (!consumed || !target) return null;
+    return Math.round((consumed / target) * 100);
+  };
+
   return (
     <Box
+      ref={tooltipRef}
       className="event-tooltip"
       sx={{
         position: 'fixed',
-        left: position.x,
-        top: position.y,
+        left: adjustedPos.x,
+        top: adjustedPos.y,
         zIndex: 1000,
         backgroundColor: '#ffffff',
         border: '1px solid #e0e0e0',
@@ -158,10 +213,70 @@ const EventTooltip = ({
         </Box>
       )}
 
-      {/* Description */}
-      <Typography variant="body2" sx={{ color: '#666', mb: 2, fontSize: '14px' }}>
-        Event description.
-      </Typography>
+      {/* Generic or dynamic description */}
+      {extendedProps?.eventType !== 'NUTRITION' && (
+        <Typography variant="body2" sx={{ color: '#666', mb: 2, fontSize: '14px' }}>
+          Event description.
+        </Typography>
+      )}
+
+      {/* Nutrition Macros */}
+      {nutrition && (
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '13px', fontWeight: 600, mb: 1 }}>
+            Meal Nutrition
+          </Typography>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+            <ChipLike label={`Calories: ${nutrition.calories} kcal`} />
+            <ChipLike label={`Carbs: ${nutrition.carbs} g`} />
+            <ChipLike label={`Protein: ${nutrition.protein} g`} />
+            <ChipLike label={`Fat: ${nutrition.fat} g`} />
+            {extendedProps?.mealPercentOfDaily != null && (
+              <ChipLike label={`~${extendedProps.mealPercentOfDaily}% daily kcal`} />
+            )}
+          </Box>
+        </Box>
+      )}
+
+      {/* Fueling / Activity */}
+      {(fueling || activityDetails?.notes) && (
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '13px', fontWeight: 600, mb: 1 }}>
+            Activity / Fueling
+          </Typography>
+          {fueling && (
+            <Typography variant="body2" sx={{ fontSize: '13px', color: '#444', mb: 0.5 }}>
+              Fueling: {fueling}
+            </Typography>
+          )}
+          {activityDetails?.notes && (
+            <Typography variant="body2" sx={{ fontSize: '13px', color: '#444' }}>
+              {activityDetails.notes}
+            </Typography>
+          )}
+        </Box>
+      )}
+
+      {/* Daily Summary (only show once per day event selection) */}
+      {dailySummary && nutrition && (
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="subtitle2" sx={{ fontSize: '13px', fontWeight: 600, mb: 1 }}>
+            Daily Totals (So Far)
+          </Typography>
+          <Typography variant="body2" sx={{ fontSize: '12px', color: '#555' }}>
+            Calories: {dailySummary.calories?.consumed}/{dailySummary.calories?.target} {dailySummary.calories?.unit} {pct(dailySummary.calories?.consumed, dailySummary.calories?.target) ? `(${pct(dailySummary.calories?.consumed, dailySummary.calories?.target)}%)` : ''}
+          </Typography>
+          <Typography variant="body2" sx={{ fontSize: '12px', color: '#555' }}>
+            Carbs: {dailySummary.carbs?.consumed}/{dailySummary.carbs?.target} {dailySummary.carbs?.unit} {pct(dailySummary.carbs?.consumed, dailySummary.carbs?.target) ? `(${pct(dailySummary.carbs?.consumed, dailySummary.carbs?.target)}%)` : ''}
+          </Typography>
+            <Typography variant="body2" sx={{ fontSize: '12px', color: '#555' }}>
+            Protein: {dailySummary.protein?.consumed}/{dailySummary.protein?.target} {dailySummary.protein?.unit} {pct(dailySummary.protein?.consumed, dailySummary.protein?.target) ? `(${pct(dailySummary.protein?.consumed, dailySummary.protein?.target)}%)` : ''}
+          </Typography>
+            <Typography variant="body2" sx={{ fontSize: '12px', color: '#555' }}>
+            Fat: {dailySummary.fat?.consumed}/{dailySummary.fat?.target} {dailySummary.fat?.unit} {pct(dailySummary.fat?.consumed, dailySummary.fat?.target) ? `(${pct(dailySummary.fat?.consumed, dailySummary.fat?.target)}%)` : ''}
+          </Typography>
+        </Box>
+      )}
 
       <Divider sx={{ my: 2 }} />
 
@@ -219,3 +334,17 @@ const EventTooltip = ({
 };
 
 export default EventTooltip;
+
+// Lightweight chip-like component inline (avoids extra dependency)
+const ChipLike = ({ label }) => (
+  <span style={{
+    display: 'inline-block',
+    background: '#f5f5f5',
+    border: '1px solid #e0e0e0',
+    borderRadius: '12px',
+    padding: '2px 8px',
+    fontSize: '11px',
+    fontWeight: 500,
+    color: '#333'
+  }}>{label}</span>
+);

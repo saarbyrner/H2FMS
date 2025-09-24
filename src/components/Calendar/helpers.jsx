@@ -25,17 +25,25 @@ export const getEventContent = (
 
   switch (currentCalendarView) {
     case CALENDAR_VIEW_OPTIONS.dayGridMonth: {
+      const nutritionCals = extendedProps?.nutrition?.calories;
+      const mealPct = extendedProps?.mealPercentOfDaily;
       return (
         <div style={eventTextStyles[CALENDAR_VIEW_OPTIONS.dayGridMonth]}>
           {displayCompleteCheckBox && displayCheckBox()}
-          {eventRenderText}
+          {eventTitle} {timeText}
+          {nutritionCals ? '' : ''}
+          {mealPct != null ? ` (${mealPct}%)` : ''}
         </div>
       );
     }
     case CALENDAR_VIEW_OPTIONS.listWeek: {
+      const nutritionCals = extendedProps?.nutrition?.calories;
+      const mealPct = extendedProps?.mealPercentOfDaily;
       return (
         <div style={eventTextStyles[CALENDAR_VIEW_OPTIONS.listWeek]}>
-          {eventRenderText}
+          {eventTitle} {timeText}
+          {nutritionCals ? '' : ''}
+          {mealPct != null ? ` (${mealPct}%)` : ''}
         </div>
       );
     }
@@ -48,6 +56,9 @@ export const getEventContent = (
             <p style={title}>{eventTitle}</p>
           </div>
           <p style={time}>{timeText}</p>
+          {extendedProps?.nutrition?.calories && (
+            <p style={time}>{extendedProps.nutrition.calories} kcal</p>
+          )}
           {!!id && (
             <p style={time}>{extendedProps?.squad?.name}</p>
           )}

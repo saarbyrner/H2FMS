@@ -9,6 +9,8 @@ import calendarEventsData from '../../data/calendar_events.json';
 import calendarCategoryEvents from '../../data/calendar_category_events.json';
 import athletesData from '../../data/athletes.json';
 import staffData from '../../data/users_staff.json';
+import nutritionData from '../../data/nutrition.json';
+import { nutritionWeekToEvents } from '../../utils/nutritionToEvents';
 
 const CalendarPage = () => {
   // Eventos base (todos) y eventos filtrados
@@ -17,7 +19,7 @@ const CalendarPage = () => {
   const [currentView, setCurrentView] = useState('dayGridMonth');
   const [showFilters, setShowFilters] = useState(false);
   const [showAddEventSidebar, setShowAddEventSidebar] = useState(false);
-  const [tooltip, setTooltip] = useState({ show: false, event: null, position: { x: 0, y: 0 } });
+  const [tooltip, setTooltip] = useState({ show: false, event: null, position: { x: 0, y: 0 }, anchorRect: null });
   const [currentDate, setCurrentDate] = useState(new Date('2025-09-01'));
   const calendarRef = useRef(null);
 
@@ -48,6 +50,14 @@ const CalendarPage = () => {
       return rest;
     });
 
+    // Nutrition events for Sarah Brown (athlete id 9) using provided nutrition.json
+    let nutritionEvents = [];
+    try {
+      nutritionEvents = nutritionWeekToEvents(nutritionData, { athleteId: 9, baseMonday: '2025-09-01', weeks: 4 });
+    } catch (e) {
+      console.warn('Failed to transform nutrition data', e);
+    }
+
     // Category events already don't have url values; ensure shape consistency and attach category label via extendedProps.calendarCategory
     const catEvents = calendarCategoryEvents.map(ev => ({
       ...ev,
@@ -57,14 +67,16 @@ const CalendarPage = () => {
       }
     }));
 
+    // Always include nutrition events when Nutrition category selected; if no categories selected we can still include base + nutrition for athlete context
     let combined;
+    const selectedSet = new Set(selectedCategories);
     if (!selectedCategories.length) {
-      combined = baseEvents;
+      // Show all base + nutrition by default so user can immediately see athlete plan
+      combined = [...baseEvents, ...nutritionEvents];
     } else {
-      const selectedSet = new Set(selectedCategories);
       const selectedCatEvents = catEvents.filter(ev => selectedSet.has(ev.extendedProps?.calendarCategory));
-      // Overlay: base + selected category events
-      combined = [...baseEvents, ...selectedCatEvents];
+      const includeNutrition = selectedSet.has('Nutrition') ? nutritionEvents : [];
+      combined = [...baseEvents, ...selectedCatEvents, ...includeNutrition];
     }
     setAllEvents(combined);
     setEvents(combined);
@@ -122,33 +134,44 @@ const CalendarPage = () => {
   // Aplicar filtrado
   useEffect(() => {
     if (!allEvents.length) return;
+    console.debug('[Calendar] Filtering events. Total before filter:', allEvents.length, 'Filters:', filters);
     const filtered = allEvents.filter(ev => {
       const squad = ev?.extendedProps?.squad;
       const type = ev?.extendedProps?.eventType;
       const location = ev?.extendedProps?.location;
-      const squadOk = !filters.squads.length || filters.squads.includes(squad);
-      const typeOk = !filters.types.length || filters.types.includes(type);
-      const locationOk = !filters.locations.length || filters.locations.includes(location);
+      const squadOk = !filters.squads.length || !squad || filters.squads.includes(squad);
+      const typeOk = !filters.types.length || !type || filters.types.includes(type);
+      // Permit events without location; only restrict if location exists and filters list is non-empty
+      const locationOk = !filters.locations.length || !location || filters.locations.includes(location);
       return squadOk && typeOk && locationOk;
     });
+    console.debug('[Calendar] After filtering:', filtered.length);
     setEvents(filtered);
   }, [allEvents, filters]);
 
   const handleEventClick = (eventObj) => {
     console.log('Event clicked:', eventObj);
-    
-    // Prevent default navigation behavior
-    eventObj.jsEvent.preventDefault();
-    eventObj.jsEvent.stopPropagation();
-    
+
     const event = eventObj.event;
     const jsEvent = eventObj.jsEvent;
-    
+
+    // If the user holds Cmd/Ctrl and the event has a URL, open in a new tab
+    if (event?.url && (jsEvent?.metaKey || jsEvent?.ctrlKey)) {
+      window.open(event.url, '_blank', 'noopener,noreferrer');
+      return false; // do not proceed with tooltip
+    }
+
+    // Prevent default navigation behavior for normal clicks
+    if (jsEvent) {
+      jsEvent.preventDefault();
+      jsEvent.stopPropagation();
+    }
+
     console.log('Event data:', event);
     console.log('Event URL:', event.url);
-    
+
     // Prefer the calendar event element for positioning (more reliable than target which might be inner span)
-    const eventEl = eventObj.el || jsEvent.currentTarget || jsEvent.target;
+    const eventEl = eventObj.el || jsEvent?.currentTarget || jsEvent?.target;
     const rect = eventEl.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
@@ -169,11 +192,20 @@ const CalendarPage = () => {
     if (x + tooltipWidth > viewportWidth - 8) x = viewportWidth - tooltipWidth - 8;
 
     const position = { x, y };
-    
-    console.log('Setting tooltip with position:', position);
-    
-    setTooltip({ show: true, event, position });
-    
+    setTooltip({
+      show: true,
+      event,
+      position,
+      anchorRect: {
+        top: rect.top,
+        bottom: rect.bottom,
+        left: rect.left,
+        right: rect.right,
+        width: rect.width,
+        height: rect.height,
+      },
+    });
+
     // Return false to prevent default behavior
     return false;
   };
@@ -221,8 +253,31 @@ const CalendarPage = () => {
 
   const handleDuplicateEvent = (eventData) => {
     console.log('Duplicate event:', eventData);
-    // TODO: Implement duplicate functionality
-    handleCloseTooltip();
+
+    const addDays = (dateLike, days) => {
+      if (!dateLike) return null;
+      const d = typeof dateLike === 'string' ? new Date(dateLike) : new Date(dateLike);
+      d.setDate(d.getDate() + days);
+      return d.toISOString();
+    };
+
+    try {
+      const newEvent = {
+        id: `${eventData?.id || 'evt'}-copy-${Date.now()}`,
+        title: eventData?.title || 'Untitled (copy)',
+        start: eventData?.start ? addDays(eventData.start, 7) : (eventData?.startStr ? addDays(eventData.startStr, 7) : null),
+        end: eventData?.end ? addDays(eventData.end, 7) : (eventData?.endStr ? addDays(eventData.endStr, 7) : null),
+        allDay: eventData?.allDay ?? false,
+        extendedProps: { ...(eventData?.extendedProps || {}) },
+      };
+
+      setEvents((prev) => [...prev, newEvent]);
+      // Keep tooltip UX tidy
+      handleCloseTooltip();
+    } catch (e) {
+      console.warn('Failed to duplicate event', e);
+      handleCloseTooltip();
+    }
   };
 
   const handleToggleFilters = () => {
@@ -255,7 +310,7 @@ const CalendarPage = () => {
   };
 
   const handleCloseTooltip = () => {
-    setTooltip({ show: false, event: null, position: { x: 0, y: 0 } });
+    setTooltip({ show: false, event: null, position: { x: 0, y: 0 }, anchorRect: null });
   };
 
   // Calculate total active filter count
@@ -285,6 +340,19 @@ const CalendarPage = () => {
     if (tooltip.show) {
       document.addEventListener('click', handleClickOutside);
       return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [tooltip.show]);
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        handleCloseTooltip();
+      }
+    };
+
+    if (tooltip.show) {
+      window.addEventListener('keydown', onKeyDown);
+      return () => window.removeEventListener('keydown', onKeyDown);
     }
   }, [tooltip.show]);
 
@@ -373,6 +441,7 @@ const CalendarPage = () => {
         <EventTooltip
           event={tooltip.event}
           position={tooltip.position}
+          anchorRect={tooltip.anchorRect}
           onClose={handleCloseTooltip}
           onEdit={handleEditEvent}
           onDelete={handleDeleteEvent}

@@ -122,7 +122,7 @@ const FullCalendarComponent = ({
         slotLabelFormat={EVENT_TIME_FORMAT}
         snapDuration="00:15:00"
         views={CALENDAR_VIEWS}
-        dayMaxEventRows={3}
+  dayMaxEventRows={6}
         nowIndicator
         navLinks
       />
