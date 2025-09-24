@@ -6,6 +6,7 @@ import Calendar from '../../components/Calendar';
 import EventTooltip from '../../components/EventTooltip';
 import AddEventSidebar from '../../components/AddEventSidebar';
 import calendarEventsData from '../../data/calendar_events.json';
+import calendarCategoryEvents from '../../data/calendar_category_events.json';
 import athletesData from '../../data/athletes.json';
 import staffData from '../../data/users_staff.json';
 
@@ -36,15 +37,50 @@ const CalendarPage = () => {
     locations: [],
   });
 
+  // Multi-select calendar categories (empty => show base events only)
+  const calendarCategories = ['Nutrition','Sleep','Physical','Spiritual','Mental','Medical'];
+  const [selectedCategories, setSelectedCategories] = useState([]); // [] means base events only
+
   useEffect(() => {
-    // Cargar eventos base y eliminar url para evitar navegación
-    const eventsWithoutUrls = calendarEventsData.map(event => {
+    // Base events without urls
+    const baseEvents = calendarEventsData.map(event => {
       const { url, ...rest } = event;
       return rest;
     });
-    setAllEvents(eventsWithoutUrls);
-    setEvents(eventsWithoutUrls);
-  }, []);
+
+    // Category events already don't have url values; ensure shape consistency and attach category label via extendedProps.calendarCategory
+    const catEvents = calendarCategoryEvents.map(ev => ({
+      ...ev,
+      extendedProps: {
+        ...(ev.extendedProps || {}),
+        calendarCategory: ev.extendedProps?.calendarCategory || 'Uncategorized'
+      }
+    }));
+
+    let combined;
+    if (!selectedCategories.length) {
+      combined = baseEvents;
+    } else {
+      const selectedSet = new Set(selectedCategories);
+      const selectedCatEvents = catEvents.filter(ev => selectedSet.has(ev.extendedProps?.calendarCategory));
+      // Overlay: base + selected category events
+      combined = [...baseEvents, ...selectedCatEvents];
+    }
+    setAllEvents(combined);
+    setEvents(combined);
+
+    // Reset filters based on combined dataset
+    const squads = Array.from(new Set(combined.map(ev => ev?.extendedProps?.squad).filter(Boolean))).sort();
+    const types = Array.from(new Set(combined.map(ev => ev?.extendedProps?.eventType).filter(Boolean))).sort();
+    const locations = Array.from(new Set(combined.map(ev => ev?.extendedProps?.location).filter(Boolean))).sort();
+    setFilters({ squads, types, locations });
+    setActiveFilters(prev => ({
+      ...prev,
+      squads: squads.length,
+      types: types.length,
+      location: locations.length,
+    }));
+  }, [selectedCategories]);
 
   // Opciones disponibles derivadas de todos los eventos
   const availableOptions = useMemo(() => {
@@ -111,28 +147,32 @@ const CalendarPage = () => {
     console.log('Event data:', event);
     console.log('Event URL:', event.url);
     
-    // Get click position for tooltip placement
-    const rect = jsEvent.target.getBoundingClientRect();
+    // Prefer the calendar event element for positioning (more reliable than target which might be inner span)
+    const eventEl = eventObj.el || jsEvent.currentTarget || jsEvent.target;
+    const rect = eventEl.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
-    const tooltipWidth = 300; // Approximate tooltip width
-    
-    // Calculate position with viewport bounds checking
+    const viewportHeight = window.innerHeight;
+    const tooltipWidth = 320; // match minWidth in tooltip component
+    const tooltipHeightEstimate = 260; // rough estimate; could be refined
+
+    // Base position: centered horizontally over event, below it
     let x = rect.left + rect.width / 2 - tooltipWidth / 2;
-    let y = rect.bottom + 10;
-    
-    // Adjust if tooltip would go off screen
-    if (x < 10) x = 10;
-    if (x + tooltipWidth > viewportWidth - 10) x = viewportWidth - tooltipWidth - 10;
-    
+    let y = rect.bottom + 8;
+
+    // If not enough space below, place above
+    if (y + tooltipHeightEstimate > viewportHeight - 12) {
+      y = rect.top - tooltipHeightEstimate - 8;
+    }
+
+    // Horizontal bounds guard
+    if (x < 8) x = 8;
+    if (x + tooltipWidth > viewportWidth - 8) x = viewportWidth - tooltipWidth - 8;
+
     const position = { x, y };
     
     console.log('Setting tooltip with position:', position);
     
-    setTooltip({
-      show: true,
-      event: event,
-      position: position
-    });
+    setTooltip({ show: true, event, position });
     
     // Return false to prevent default behavior
     return false;
@@ -269,6 +309,9 @@ const CalendarPage = () => {
         currentDate={currentDate}
         onDateChange={handleDateChange}
         activeFilterCount={getTotalActiveFilterCount()}
+        selectedCategories={selectedCategories}
+        onCategoriesChange={setSelectedCategories}
+        calendarCategories={calendarCategories}
       />
 
       {/* Main Content Area */}
@@ -287,6 +330,8 @@ const CalendarPage = () => {
               selectedFilters={filters}
               availableOptions={availableOptions}
               onFiltersChange={handleFiltersChange}
+              selectedCategories={selectedCategories}
+              onCategoriesChange={setSelectedCategories}
             />
           </Box>
         )}

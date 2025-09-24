@@ -13,7 +13,11 @@ const EventTooltip = ({
 }) => {
   if (!event) return null;
 
-  const { title, start, end, extendedProps } = event;
+  const { title, start, end, extendedProps, backgroundColor, borderColor } = event;
+
+  const squareBg = backgroundColor || extendedProps?.backgroundColor || '#666';
+  const squareBorder = borderColor || extendedProps?.borderColor || squareBg;
+  const needsBorderContrast = squareBg === '#ffffff' || squareBg === '#fff';
   
   // Format date and time
   const formatDateTime = (dateString) => {
@@ -70,7 +74,7 @@ const EventTooltip = ({
     <Box
       className="event-tooltip"
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         left: position.x,
         top: position.y,
         zIndex: 1000,
@@ -87,13 +91,15 @@ const EventTooltip = ({
       {/* Header with icon, title and duplicate button */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          {/* Small dark brown square icon */}
+          {/* Color square matching event color */}
           <Box
             sx={{
               width: '12px',
               height: '12px',
-              backgroundColor: '#8B4513', // Dark brown color
+              backgroundColor: squareBg,
+              border: needsBorderContrast ? '1px solid #ccc' : `1px solid ${squareBorder}`,
               borderRadius: '2px',
+              boxSizing: 'border-box'
             }}
           />
           <Typography variant="h6" sx={{ fontWeight: 600, color: '#333', fontSize: '16px' }}>

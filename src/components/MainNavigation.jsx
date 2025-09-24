@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useLocation, useNavigate } from 'react-router-dom'
-import KitmanLogo from '/public/assets/logos/Kitman Labs base.png'
+import H2FWordmarkLogo from '/public/assets/logos/teams/h2fms/icon-app-itunes-1024x1024 wordmark.png'
 import {
   Drawer,
   Box,
@@ -189,7 +189,7 @@ function MainNavigation({
       sx={{
         width: isOpen ? DRAWER_WIDTH : DRAWER_WIDTH_COLLAPSED,
         height: '100vh',
-        background: 'linear-gradient(180deg, #000000 0%, #111111 40%, #000000 70%, #040037ff 90%, #040037ff 100%)',
+        background: 'linear-gradient(180deg, #000000 0%, #111111 40%, #000000 70%, #161616 90%, #181818 100%)',
         color: '#ffffff',
         display: 'flex',
         flexDirection: 'column'
@@ -207,16 +207,16 @@ function MainNavigation({
       >
         <Box
           sx={{
-            width: isOpen ? 'auto' : 32,
-            height: 32,
+            width: isOpen ? 'auto' : 48,
+            height: 48,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center'
           }}
         >
           <img
-            src={KitmanLogo}
-            alt="Kitman Labs"
+            src={H2FWordmarkLogo}
+            alt="H2F Wordmark Logo"
             style={{
               height: '100%',
               width: 'auto',

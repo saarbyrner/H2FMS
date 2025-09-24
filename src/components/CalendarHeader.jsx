@@ -15,7 +15,8 @@ const CalendarHeader = ({
   onNavigate,
   currentDate,
   onDateChange,
-  activeFilterCount = 0
+  activeFilterCount = 0,
+  // category selection moved to FiltersSidebar
 }) => {
   const [selectedDate, setSelectedDate] = useState(currentDate || new Date('2025-09-01'));
   const [datePickerAnchor, setDatePickerAnchor] = useState(null);
@@ -48,14 +49,14 @@ const CalendarHeader = ({
       sx={{
         display: 'flex',
         alignItems: 'center',
-        padding: '16px 24px',
+        justifyContent: 'space-between',
+        padding: '12px 24px',
         backgroundColor: '#ffffff',
-        minHeight: '64px',
-        position: 'relative',
+        minHeight: '64px'
       }}
     >
-      {/* Left Section - Filters and Navigation */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1 }}>
+      {/* Left Section - Filters + Nav */}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         {/* Show/Hide Filters Button */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Badge
@@ -120,23 +121,15 @@ const CalendarHeader = ({
         </Box>
       </Box>
 
-      {/* Center Section - Date Title with Arrow Button - Absolutely positioned */}
-      <Box
-        sx={{
-          position: 'absolute',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 1,
-        }}
-      >
+      {/* Center Section - Date Title */}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
         <Typography
           sx={{
             color: '#333333',
             fontSize: '20px',
             fontWeight: 600,
             textAlign: 'center',
+            whiteSpace: 'nowrap'
           }}
         >
           {formatMonthYear(selectedDate)}
@@ -156,8 +149,8 @@ const CalendarHeader = ({
         </IconButton>
       </Box>
 
-      {/* Right Section - Month and Add Buttons */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1, justifyContent: 'flex-end' }}>
+      {/* Right Section - View & Add */}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         <Button
           variant="secondary"
         >
@@ -175,7 +168,7 @@ const CalendarHeader = ({
         </Button>
       </Box>
 
-      {/* Date Picker Popover */}
+  {/* Date Picker Popover */}
       <Popover
         open={Boolean(datePickerAnchor)}
         anchorEl={datePickerAnchor}

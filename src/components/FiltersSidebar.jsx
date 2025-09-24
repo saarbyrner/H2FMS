@@ -14,13 +14,22 @@ const matchSearch = (label, term) => label.toLowerCase().includes(term.toLowerCa
  *  - availableOptions: { squads:[], types:[], locations:[] }
  *  - onFiltersChange: (filtrosActualizados) => void
  */
-const FiltersSidebar = ({ onClose, selectedFilters, availableOptions, onFiltersChange }) => {
+const FiltersSidebar = ({ 
+  onClose, 
+  selectedFilters, 
+  availableOptions, 
+  onFiltersChange,
+  selectedCategories = [],
+  onCategoriesChange = () => {},
+  calendarCategories = ['Nutrition','Sleep','Physical','Spiritual','Mental','Medical']
+}) => {
   // Accordion states
   const [squadsExpanded, setSquadsExpanded] = useState(true);
   const [typesExpanded, setTypesExpanded] = useState(true);
   const [attendeesExpanded, setAttendeesExpanded] = useState(true);
   const [locationExpanded, setLocationExpanded] = useState(true);
   const [gamesExpanded, setGamesExpanded] = useState(true);
+  const [categoriesExpanded, setCategoriesExpanded] = useState(true);
   // Estado local de búsqueda
   const [squadSearch, setSquadSearch] = useState('');
   const [typeSearch, setTypeSearch] = useState('');
@@ -204,6 +213,38 @@ const FiltersSidebar = ({ onClose, selectedFilters, availableOptions, onFiltersC
       </div>
 
       <div style={{ padding: 0 }}>
+        {/* Calendar Categories Section */}
+        <FilterSection
+          title="Calendar Categories"
+          count={selectedCategories.length}
+          expanded={categoriesExpanded}
+          onToggle={() => setCategoriesExpanded(!categoriesExpanded)}
+          onSelectAll={() => onCategoriesChange(calendarCategories)}
+          onClearAll={() => onCategoriesChange([])}
+          showSearch={false}
+        >
+          <div>
+            {calendarCategories.map(cat => (
+              <div key={cat} className="form-checkbox">
+                <input
+                  type="checkbox"
+                  id={`cat-${cat}`}
+                  checked={selectedCategories.includes(cat)}
+                  onChange={() => {
+                    const exists = selectedCategories.includes(cat);
+                    const updated = exists ? selectedCategories.filter(c => c !== cat) : [...selectedCategories, cat];
+                    onCategoriesChange(updated);
+                  }}
+                />
+                <label htmlFor={`cat-${cat}`}>{cat}</label>
+              </div>
+            ))}
+            {!calendarCategories.length && (
+              <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)' }}>No categories</div>
+            )}
+          </div>
+        </FilterSection>
+
         {/* Squads Section */}
         <FilterSection
           title="Squads"
@@ -280,9 +321,6 @@ const FiltersSidebar = ({ onClose, selectedFilters, availableOptions, onFiltersC
           onToggle={() => setGamesExpanded(!gamesExpanded)}
           showSearch={false}
         >
-          <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-secondary)' }}>
-            (Pendiente de definición de modelo de datos de competiciones)
-          </div>
         </FilterSection>
       </div>
     </div>

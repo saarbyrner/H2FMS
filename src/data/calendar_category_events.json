@@ -1,0 +1,194 @@
+[
+  {
+    "id": "nutrition-1",
+    "title": "Team Breakfast - High Protein",
+    "start": "2025-09-02T07:30:00",
+    "end": "2025-09-02T08:15:00",
+    "backgroundColor": "#1bbc9c",
+    "borderColor": "#15a086",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Nutrition",
+      "eventType": "NUTRITION_SESSION",
+      "squad": "International Squad",
+      "location": "Dining Hall",
+      "details": "Emphasis on lean proteins and complex carbs"
+    }
+  },
+  {
+    "id": "nutrition-2",
+    "title": "Pre-Game Fueling",
+    "start": "2025-09-09T11:30:00",
+    "end": "2025-09-09T12:00:00",
+    "backgroundColor": "#1bbc9c",
+    "borderColor": "#15a086",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Nutrition",
+      "eventType": "NUTRITION_BRIEFING",
+      "squad": "International Squad",
+      "location": "Nutrition Office",
+      "details": "High GI carbohydrate focus"
+    }
+  },
+  {
+    "id": "sleep-1",
+    "title": "Sleep Hygiene Workshop",
+    "start": "2025-09-03T19:00:00",
+    "end": "2025-09-03T20:00:00",
+    "backgroundColor": "#34495e",
+    "borderColor": "#2d3e50",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Sleep",
+      "eventType": "SLEEP_EDUCATION",
+      "squad": "International Squad",
+      "location": "Auditorium",
+      "details": "Blue light mitigation & circadian rhythms"
+    }
+  },
+  {
+    "id": "sleep-2",
+    "title": "Individual Sleep Coaching",
+    "start": "2025-09-10T09:30:00",
+    "end": "2025-09-10T10:00:00",
+    "backgroundColor": "#34495e",
+    "borderColor": "#2d3e50",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Sleep",
+      "eventType": "SLEEP_SESSION",
+      "squad": "Player A",
+      "location": "Meeting Room 2",
+      "details": "Review sleep tracker data"
+    }
+  },
+  {
+    "id": "physical-1",
+    "title": "Strength Block A",
+    "start": "2025-09-04T10:00:00",
+    "end": "2025-09-04T11:15:00",
+    "backgroundColor": "#3a8dee",
+    "borderColor": "#0e478a",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Physical",
+      "eventType": "PHYSICAL_STRENGTH",
+      "squad": "International Squad",
+      "location": "Performance Gym",
+      "details": "Lower body strength & power"
+    }
+  },
+  {
+    "id": "physical-2",
+    "title": "Speed / Acceleration",
+    "start": "2025-09-11T15:00:00",
+    "end": "2025-09-11T15:45:00",
+    "backgroundColor": "#3a8dee",
+    "borderColor": "#0e478a",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Physical",
+      "eventType": "PHYSICAL_SPEED",
+      "squad": "International Squad",
+      "location": "Outdoor Track",
+      "details": "10-30m acceleration focus"
+    }
+  },
+  {
+    "id": "spiritual-1",
+    "title": "Mindfulness & Reflection",
+    "start": "2025-09-05T08:00:00",
+    "end": "2025-09-05T08:30:00",
+    "backgroundColor": "#9b58b5",
+    "borderColor": "#8f44ad",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Spiritual",
+      "eventType": "SPIRITUAL_MINDFULNESS",
+      "squad": "All Players",
+      "location": "Wellness Room",
+      "details": "Breathing and grounding session"
+    }
+  },
+  {
+    "id": "spiritual-2",
+    "title": "Team Values Workshop",
+    "start": "2025-09-12T17:15:00",
+    "end": "2025-09-12T18:00:00",
+    "backgroundColor": "#9b58b5",
+    "borderColor": "#8f44ad",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Spiritual",
+      "eventType": "SPIRITUAL_TEAM_CULTURE",
+      "squad": "Leadership Group",
+      "location": "Conference Room",
+      "details": "Core values alignment"
+    }
+  },
+  {
+    "id": "mental-1",
+    "title": "Performance Psychology",
+    "start": "2025-09-06T13:00:00",
+    "end": "2025-09-06T13:45:00",
+    "backgroundColor": "#e74d3d",
+    "borderColor": "#c0392b",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Mental",
+      "eventType": "MENTAL_SKILLS",
+      "squad": "Individual Session",
+      "location": "Psych Office",
+      "details": "Focus & visualization"
+    }
+  },
+  {
+    "id": "mental-2",
+    "title": "Team Resilience Session",
+    "start": "2025-09-13T14:00:00",
+    "end": "2025-09-13T15:00:00",
+    "backgroundColor": "#e74d3d",
+    "borderColor": "#c0392b",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Mental",
+      "eventType": "MENTAL_TEAM",
+      "squad": "International Squad",
+      "location": "Auditorium",
+      "details": "Stress inoculation drills"
+    }
+  },
+  {
+    "id": "medical-1",
+    "title": "Medical Screening Block",
+    "start": "2025-09-07T09:00:00",
+    "end": "2025-09-07T10:30:00",
+    "backgroundColor": "#f39c11",
+    "borderColor": "#e77e23",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Medical",
+      "eventType": "MEDICAL_SCREENING",
+      "squad": "International Squad",
+      "location": "Medical Suite",
+      "details": "Orthopedic & movement screen"
+    }
+  },
+  {
+    "id": "medical-2",
+    "title": "Rehab Progress Check",
+    "start": "2025-09-14T11:00:00",
+    "end": "2025-09-14T11:30:00",
+    "backgroundColor": "#f39c11",
+    "borderColor": "#e77e23",
+    "textColor": "#ffffff",
+    "extendedProps": {
+      "calendarCategory": "Medical",
+      "eventType": "MEDICAL_REHAB",
+      "squad": "Player B",
+      "location": "Treatment Room 1",
+      "details": "Return to play criteria review"
+    }
+  }
+]
