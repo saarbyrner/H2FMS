@@ -16,7 +16,8 @@ const CalendarHeader = ({
   currentDate,
   onDateChange,
   activeFilterCount = 0,
-  // category selection moved to FiltersSidebar
+  showAllDay = false,
+  onToggleAllDay,
 }) => {
   const [selectedDate, setSelectedDate] = useState(currentDate || new Date('2025-09-01'));
   const [datePickerAnchor, setDatePickerAnchor] = useState(null);
@@ -151,12 +152,29 @@ const CalendarHeader = ({
 
       {/* Right Section - View & Add */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Button
-          variant="secondary"
-        >
-          Month
-          <ArrowDropDown sx={{ fontSize: '16px', marginLeft: '8px' }} />
-        </Button>
+        {/* View Switcher: Month / Week */}
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <Button
+            variant={currentView === 'dayGridMonth' ? 'primary' : 'secondary'}
+            onClick={() => onViewChange && onViewChange('dayGridMonth')}
+          >
+            Month
+          </Button>
+          <Button
+            variant={currentView === 'timeGridWeek' ? 'primary' : 'secondary'}
+            onClick={() => onViewChange && onViewChange('timeGridWeek')}
+          >
+            Week
+          </Button>
+          {currentView === 'timeGridWeek' && (
+            <Button
+              variant={showAllDay ? 'secondary' : 'secondary'}
+              onClick={onToggleAllDay}
+            >
+              {showAllDay ? 'Hide All-Day' : 'Show All-Day'}
+            </Button>
+          )}
+        </Box>
 
         <Button
           variant="primary"

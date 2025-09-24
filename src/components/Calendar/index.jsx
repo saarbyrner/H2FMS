@@ -25,6 +25,21 @@ const Calendar = forwardRef(({
     }
   };
 
+  // Sync external selectedCalendarView changes (e.g. header Month/Week toggle)
+  useEffect(() => {
+    if (!selectedCalendarView) return;
+    if (selectedCalendarView === currentCalendarView) return;
+    const api = forwardedRef?.current?.getApi?.();
+    try {
+      if (api) {
+        api.changeView(selectedCalendarView);
+        setCurrentCalendarView(selectedCalendarView);
+      }
+    } catch (e) {
+      console.warn('Failed to change calendar view', selectedCalendarView, e);
+    }
+  }, [selectedCalendarView, currentCalendarView, forwardedRef]);
+
   const handleEventClickInternal = (eventObj) => {
     if (handleEventClick) {
       handleEventClick(eventObj);
@@ -91,6 +106,7 @@ const Calendar = forwardRef(({
           setCalendarLoading={setCalendarLoading}
           onDatesRender={onDatesRender}
           initialDate={initialDate}
+          allDaySlot={restProps.allDaySlot}
           {...restProps}
         />
       </div>

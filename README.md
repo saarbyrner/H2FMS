@@ -21,6 +21,9 @@ This project recreates the exact look, feel, and functionality of the original i
 - **Day View**: Single day detailed view
 - **List View**: Chronological list of events
 
+#### Switching Views (Month / Week)
+Use the Month and Week buttons in the calendar header (right side). The active view is highlighted with the primary button style. Navigation (Prev / Next / Today) respects the currently active view. Adding new events works the same in either view; no extra configuration needed.
+
 ### Event Types
 - **Training Sessions**: Strength training, cardio, technical skills, recovery sessions
 - **Games/Matches**: League games, cup matches, friendly matches

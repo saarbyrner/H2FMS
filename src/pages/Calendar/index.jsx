@@ -21,6 +21,7 @@ const CalendarPage = () => {
   const [showAddEventSidebar, setShowAddEventSidebar] = useState(false);
   const [tooltip, setTooltip] = useState({ show: false, event: null, position: { x: 0, y: 0 }, anchorRect: null });
   const [currentDate, setCurrentDate] = useState(new Date('2025-09-01'));
+  const [showAllDay, setShowAllDay] = useState(false); // collapsed by default
   const calendarRef = useRef(null);
 
   // Conteo de filtros activos para el header
@@ -369,7 +370,13 @@ const CalendarPage = () => {
       {/* Calendar Header - Always at the top */}
       <CalendarHeader
         currentView={currentView}
-        onViewChange={setCurrentView}
+        onViewChange={(view) => {
+          // Allow header buttons to send string, or FullCalendar viewInfo object
+            const viewType = typeof view === 'string' ? view : view?.view?.type;
+            if (viewType) setCurrentView(viewType);
+        }}
+        showAllDay={showAllDay}
+        onToggleAllDay={() => setShowAllDay((v) => !v)}
         onAddEvent={handleAddEvent}
         onToggleFilters={handleToggleFilters}
         showFilters={showFilters}
@@ -431,6 +438,7 @@ const CalendarPage = () => {
               onEditEvent={handleEditEvent}
               onDeleteEvent={handleDeleteEvent}
               onMoreDetails={handleMoreDetails}
+              allDaySlot={showAllDay}
             />
           </Box>
         </Box>

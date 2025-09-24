@@ -153,10 +153,12 @@
   opacity: 1;
 }
 
-/* Time grid styling */
+/* Time grid styling (compact) */
 .fc .fc-timegrid-slot {
-  height: 2.4em;
+  height: 1.4em;
+  line-height: 1.4em;
   border-bottom: 0 !important;
+  padding: 0 !important;
 }
 
 .fc .fc-time-grid .fc-slats td {
@@ -411,23 +413,39 @@
   max-width: calc(100% / 7) !important;
 }
 
-/* Time grid consistent sizing */
+/* Time grid consistent sizing (compact + scroll) */
 .fc .fc-timegrid-slot {
-  height: 2.4em !important;
-  min-height: 2.4em !important;
-  max-height: 2.4em !important;
+  height: 1.4em !important;
+  min-height: 1.4em !important;
+  max-height: 1.4em !important;
 }
 
 .fc .fc-timegrid-slot-label {
-  height: 2.4em !important;
-  min-height: 2.4em !important;
-  max-height: 2.4em !important;
+  height: 1.4em !important;
+  min-height: 1.4em !important;
+  max-height: 1.4em !important;
+  line-height: 1.4em !important;
+  padding: 0 2px !important;
+  font-size: 10px !important;
+  color: #676767 !important;
 }
 
 .fc .fc-timegrid-slot-minor {
-  height: 1.2em !important;
-  min-height: 1.2em !important;
-  max-height: 1.2em !important;
+  height: 0.7em !important;
+  min-height: 0.7em !important;
+  max-height: 0.7em !important;
+}
+
+/* Scrollable body for time grid */
+.fc .fc-timegrid-body {
+  overflow-y: auto !important;
+}
+
+/* Compact event appearance */
+.fc .fc-timegrid-event-harness .fc-event {
+  font-size: 10px !important;
+  padding: 0 2px !important;
+  line-height: 1.2;
 }
 
 /* Calendar column headers */

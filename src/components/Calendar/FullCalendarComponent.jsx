@@ -30,6 +30,7 @@ const FullCalendarComponent = ({
   setCalendarLoading,
   onDatesRender,
   initialDate,
+  allDaySlot = true,
 }) => {
   const onEventDidMount = (arg) => {
     const {
@@ -81,7 +82,8 @@ const FullCalendarComponent = ({
         displayEventTime
         displayEventEnd
         firstDay={1} // Monday start
-        height="auto"
+        height="100%"
+        expandRows={false}
         selectable={false}
         droppable={false}
         moreLinkClick="popover"
@@ -109,7 +111,7 @@ const FullCalendarComponent = ({
         }
         loading={setCalendarLoading}
         eventTimeFormat={EVENT_TIME_FORMAT}
-        allDaySlot={true}
+  allDaySlot={allDaySlot}
         eventContent={(eventRenderArg) =>
           getEventContent(currentCalendarView, eventRenderArg)
         }
