@@ -392,9 +392,10 @@ function PlansPage() {
                       sx={{ 
                         textTransform: 'none', 
                         flexGrow: 1,
-                        backgroundColor: 'var(--color-primary)',
+                        backgroundColor: 'var(--color-secondary)',
+                        color: 'var(--color-text-primary)',
                         '&:hover': {
-                          backgroundColor: 'var(--color-primary-hover)'
+                          backgroundColor: 'var(--color-secondary-hover)'
                         }
                       }}
                     >
