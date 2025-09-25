@@ -15,6 +15,10 @@ import MedicalDashboard from './features/medical/pages/Dashboard'
 import AnalysisDashboard from './features/analysis/pages/Dashboard'
 // Forms pages
 import FormsDashboard from './features/forms/pages/Dashboard'
+// Media pages
+import MediaDashboard from './features/media/pages/Dashboard'
+// Settings pages
+import SettingsDashboard from './features/settings/pages/Dashboard'
 
 function App() {
   return (
@@ -33,8 +37,9 @@ function App() {
   <Route path="/psychological" element={<PsychologicalDashboard />} />
   {/* Physical Routes (ALL MOCK DATA) */}
   <Route path="/physical" element={<PhysicalDashboard />} />
+        <Route path="/media" element={<MediaDashboard />} />
         <Route path="/activity" element={<SimplePage pageName="Activity log" />} />
-        <Route path="/settings" element={<SimplePage pageName="Admin" />} />
+        <Route path="/settings" element={<SettingsDashboard />} />
         <Route path="/help" element={<SimplePage pageName="Help" />} />
       </Routes>
     </LayoutWithMainNav>

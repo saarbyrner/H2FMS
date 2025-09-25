@@ -57,8 +57,9 @@ const pageTitles = {
   '/nutrition': 'Nutrition',
   '/nutrition/create': 'Plan Builder',
   '/nutrition/templates': 'Templates',
+  '/media': 'Media',
   '/activity': 'Activity log',
-  '/settings': 'Admin',
+  '/settings': 'Settings',
   '/help': 'Help'
 }
 
