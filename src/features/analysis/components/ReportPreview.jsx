@@ -66,6 +66,12 @@ const sampleData = {
     { name: 'Feb', completed: 52, pending: 5, total: 57 },
     { name: 'Mar', completed: 48, pending: 12, total: 60 },
     { name: 'Apr', completed: 55, pending: 3, total: 58 }
+  ],
+  leadership: [
+    { name: 'May', entries: 100, graduates: 93, attrition: 5.1 },
+    { name: 'Jun', entries: 98, graduates: 95, attrition: 4.8 },
+    { name: 'Jul', entries: 102, graduates: 91, attrition: 6.2 },
+    { name: 'Aug', entries: 99, graduates: 94, attrition: 5.5 }
   ]
 }
 
@@ -200,6 +206,20 @@ function ReportPreview({ report }) {
                 dot={{ fill: '#f57c00', strokeWidth: 2, r: 3 }}
               />
             </LineChart>
+          </ResponsiveContainer>
+        )
+
+      case 'leadership':
+        return (
+          <ResponsiveContainer width="100%" height={120}>
+            <BarChart data={data}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+              <XAxis dataKey="name" tick={{ fontSize: 10 }} />
+              <YAxis tick={{ fontSize: 10 }} />
+              <Tooltip />
+              <Bar dataKey="entries" fill="#3B4960" radius={[2, 2, 0, 0]} />
+              <Bar dataKey="graduates" fill="#388e3c" radius={[2, 2, 0, 0]} />
+            </BarChart>
           </ResponsiveContainer>
         )
 

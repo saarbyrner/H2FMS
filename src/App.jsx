@@ -13,6 +13,7 @@ import PhysicalDashboard from './features/physical/pages/Dashboard'
 import MedicalDashboard from './features/medical/pages/Dashboard'
 // Analysis pages
 import AnalysisDashboard from './features/analysis/pages/Dashboard'
+import LeadershipBoard from './features/analysis/pages/LeadershipBoard'
 // Forms pages
 import FormsDashboard from './features/forms/pages/Dashboard'
 // Media pages
@@ -28,6 +29,7 @@ function App() {
         <Route path="/dashboard" element={<SimplePage pageName="Dashboard" />} />
         <Route path="/medical" element={<MedicalDashboard />} />
         <Route path="/analysis" element={<AnalysisDashboard />} />
+        <Route path="/analysis/leadership-board" element={<LeadershipBoard />} />
         <Route path="/soldier" element={<Soldiers />} />
         <Route path="/questionnaires" element={<FormsDashboard />} />
   <Route path="/planning" element={<CalendarPage />} />

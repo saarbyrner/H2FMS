@@ -25,6 +25,23 @@ import ReportPreview from '../components/ReportPreview'
 // Report card data configuration with chart types and preview data
 const reportCards = [
   {
+    id: 'leadership-board',
+    title: 'Leadership board',
+    description: 'Comprehensive leadership performance metrics',
+    icon: AssessmentOutlined,
+    color: 'var(--color-background-secondary)',
+    iconColor: 'var(--color-primary)',
+    path: '/analysis/leadership-board',
+    chartType: 'leadership',
+    lastUpdated: '1h ago',
+    keyMetrics: [
+      { label: 'entries', value: '100%' },
+      { label: 'graduates', value: '93%' },
+      { label: 'attrition', value: '5.1%' }
+    ],
+    tags: ['leadership', 'performance', 'metrics']
+  },
+  {
     id: 'medical-reports',
     title: 'medical health report',
     description: 'Injury tracking and health analytics',
