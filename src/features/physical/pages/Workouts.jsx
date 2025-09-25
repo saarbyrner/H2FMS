@@ -208,9 +208,10 @@ function WorkoutsPage() {
                   startIcon={<PlayArrowOutlined />}
                   sx={{ 
                     textTransform: 'none',
-                    backgroundColor: 'var(--color-primary)',
+                    backgroundColor: 'var(--color-secondary)',
+                    color: 'var(--color-text-primary)',
                     '&:hover': {
-                      backgroundColor: 'var(--color-primary-hover)'
+                      backgroundColor: 'var(--color-secondary-hover)'
                     }
                   }}
                 >
@@ -222,9 +223,10 @@ function WorkoutsPage() {
                   onClick={() => handleEditWorkout(workout)}
                   sx={{ 
                     textTransform: 'none',
-                    backgroundColor: 'var(--color-primary)',
+                    backgroundColor: 'var(--color-secondary)',
+                    color: 'var(--color-text-primary)',
                     '&:hover': {
-                      backgroundColor: 'var(--color-primary-hover)'
+                      backgroundColor: 'var(--color-secondary-hover)'
                     }
                   }}
                 >

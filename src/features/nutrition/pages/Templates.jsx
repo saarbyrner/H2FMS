@@ -24,7 +24,19 @@ export default function Templates() {
                 </Stack>
               </CardContent>
               <CardActions sx={{ mt:'auto' }}>
-                <Button size="small" onClick={()=>navigate('/nutrition/create')}>Use Template</Button>
+                <Button 
+                  size="small" 
+                  onClick={()=>navigate('/nutrition/create')}
+                  sx={{
+                    backgroundColor: 'var(--color-secondary)',
+                    color: 'var(--color-text-primary)',
+                    '&:hover': {
+                      backgroundColor: 'var(--color-secondary-hover)'
+                    }
+                  }}
+                >
+                  Use Template
+                </Button>
               </CardActions>
             </Card>
           </Grid>

@@ -93,9 +93,54 @@ export default function PlanBuilder() {
                 {plan.meals.map(m => <MealCard key={m.id} meal={m} onRegenerate={()=>{ /* no-op in prototype */ }} />)}
               </Stack>
               <Stack direction="row" spacing={1}>
-                <Button onClick={()=>adjust(-10)} variant="outlined" size="small">Adjust -10%</Button>
-                <Button onClick={()=>adjust(10)} variant="outlined" size="small">Adjust +10%</Button>
-                <Button onClick={()=>handleGenerate()} variant="outlined" size="small">Regenerate</Button>
+                <Button 
+                  onClick={()=>adjust(-10)} 
+                  variant="outlined" 
+                  size="small"
+                  sx={{
+                    backgroundColor: 'var(--color-secondary)',
+                    color: 'var(--color-text-primary)',
+                    borderColor: 'var(--color-border-primary)',
+                    '&:hover': {
+                      backgroundColor: 'var(--color-secondary-hover)',
+                      borderColor: 'var(--color-border-primary)'
+                    }
+                  }}
+                >
+                  Adjust -10%
+                </Button>
+                <Button 
+                  onClick={()=>adjust(10)} 
+                  variant="outlined" 
+                  size="small"
+                  sx={{
+                    backgroundColor: 'var(--color-secondary)',
+                    color: 'var(--color-text-primary)',
+                    borderColor: 'var(--color-border-primary)',
+                    '&:hover': {
+                      backgroundColor: 'var(--color-secondary-hover)',
+                      borderColor: 'var(--color-border-primary)'
+                    }
+                  }}
+                >
+                  Adjust +10%
+                </Button>
+                <Button 
+                  onClick={()=>handleGenerate()} 
+                  variant="outlined" 
+                  size="small"
+                  sx={{
+                    backgroundColor: 'var(--color-secondary)',
+                    color: 'var(--color-text-primary)',
+                    borderColor: 'var(--color-border-primary)',
+                    '&:hover': {
+                      backgroundColor: 'var(--color-secondary-hover)',
+                      borderColor: 'var(--color-border-primary)'
+                    }
+                  }}
+                >
+                  Regenerate
+                </Button>
                 <Button onClick={accept} disabled={plan.accepted} variant="contained" size="small">{plan.accepted? 'Accepted':'Accept Plan'}</Button>
               </Stack>
             </Stack>

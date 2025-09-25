@@ -474,7 +474,15 @@ function PlansPage() {
                     <Button
                       size="small"
                       startIcon={<EditOutlined />}
-                      sx={{ textTransform: 'none', flexGrow: 1 }}
+                      sx={{ 
+                        textTransform: 'none', 
+                        flexGrow: 1,
+                        backgroundColor: 'var(--color-secondary)',
+                        color: 'var(--color-text-primary)',
+                        '&:hover': {
+                          backgroundColor: 'var(--color-secondary-hover)'
+                        }
+                      }}
                     >
                       Edit
                     </Button>
