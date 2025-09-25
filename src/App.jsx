@@ -1,8 +1,20 @@
 import { Routes, Route } from 'react-router-dom'
 import LayoutWithMainNav from './components/LayoutWithMainNav'
 import SimplePage from './pages/SimplePage'
-import Athletes from './pages/Athletes'
+import Soldiers from './pages/Soldiers'
 import CalendarPage from './pages/Calendar'
+// Nutrition pages
+import NutritionDashboard from './features/nutrition/pages/Dashboard'
+// Psychological pages
+import PsychologicalDashboard from './features/psychological/pages/Dashboard'
+// Physical pages
+import PhysicalDashboard from './features/physical/pages/Dashboard'
+// Medical pages
+import MedicalDashboard from './features/medical/pages/Dashboard'
+// Analysis pages
+import AnalysisDashboard from './features/analysis/pages/Dashboard'
+// Forms pages
+import FormsDashboard from './features/forms/pages/Dashboard'
 
 function App() {
   return (
@@ -10,12 +22,17 @@ function App() {
       <Routes>
         <Route path="/" element={<SimplePage pageName="Home" />} />
         <Route path="/dashboard" element={<SimplePage pageName="Dashboard" />} />
-        <Route path="/medical" element={<SimplePage pageName="Medical" />} />
-        <Route path="/analysis" element={<SimplePage pageName="Analysis" />} />
-        <Route path="/athlete" element={<Athletes />} />
-        <Route path="/workloads" element={<SimplePage pageName="Workload" />} />
-        <Route path="/questionnaires" element={<SimplePage pageName="Forms" />} />
-        <Route path="/planning" element={<CalendarPage />} />
+        <Route path="/medical" element={<MedicalDashboard />} />
+        <Route path="/analysis" element={<AnalysisDashboard />} />
+        <Route path="/soldier" element={<Soldiers />} />
+        <Route path="/questionnaires" element={<FormsDashboard />} />
+  <Route path="/planning" element={<CalendarPage />} />
+  {/* Nutrition Routes */}
+  <Route path="/nutrition" element={<NutritionDashboard />} />
+  {/* Psychological Routes (ALL MOCK DATA) */}
+  <Route path="/psychological" element={<PsychologicalDashboard />} />
+  {/* Physical Routes (ALL MOCK DATA) */}
+  <Route path="/physical" element={<PhysicalDashboard />} />
         <Route path="/activity" element={<SimplePage pageName="Activity log" />} />
         <Route path="/settings" element={<SimplePage pageName="Admin" />} />
         <Route path="/help" element={<SimplePage pageName="Help" />} />

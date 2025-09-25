@@ -35,8 +35,12 @@ import {
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { LicenseInfo } from '@mui/x-license-pro';
 
-const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => {
+// TODO: Set MUI X License Key with correct key
+// LicenseInfo.setLicenseKey('YOUR_ACTUAL_MUI_X_LICENSE_KEY_HERE');
+
+const AddEventModal = ({ open, onClose, onSave, soldiers = [], staff = [] }) => {
   const [formData, setFormData] = useState({
     eventType: '',
     title: '',
@@ -47,7 +51,7 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
     timezone: 'Europe/Dublin',
     repeats: 'none',
     location: '',
-    selectedAthletes: [],
+    selectedSoldiers: [],
     selectedStaff: [],
     staffVisibility: 'all',
     attachments: [],
@@ -141,13 +145,13 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
           duration: formData.duration,
           timezone: formData.timezone,
           repeats: formData.repeats,
-          selectedAthletes: formData.selectedAthletes,
+          selectedSoldiers: formData.selectedSoldiers,
           selectedStaff: formData.selectedStaff,
           staffVisibility: formData.staffVisibility,
           attachments: formData.attachments,
-          squad: formData.selectedAthletes.length > 0 ? 
-            formData.selectedAthletes[0].squad_name || 'International Squad' : 
-            'International Squad',
+          squad: formData.selectedSoldiers.length > 0 ? 
+            formData.selectedSoldiers[0].squad_name || 'Battalion 1' : 
+            'Battalion 1',
           coach: formData.selectedStaff.length > 0 ? 
             `${formData.selectedStaff[0].firstname} ${formData.selectedStaff[0].lastname}` : 
             'TBD',
@@ -168,7 +172,7 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
         timezone: 'Europe/Dublin',
         repeats: 'none',
         location: '',
-        selectedAthletes: [],
+        selectedSoldiers: [],
         selectedStaff: [],
         staffVisibility: 'all',
         attachments: [],
@@ -209,9 +213,9 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
           justifyContent: 'space-between', 
           alignItems: 'center',
           padding: '24px 24px 16px 24px',
-          borderBottom: '1px solid #e8eaed',
+          borderBottom: '1px solid var(--color-border-primary)',
         }}>
-          <Typography variant="h6" sx={{ fontWeight: 600, color: '#1c1c1c' }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, color: 'var(--color-text-primary)' }}>
             New Event
           </Typography>
           <IconButton onClick={onClose} size="small">
@@ -387,14 +391,14 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
               />
             </Grid>
 
-            {/* Athletes */}
+            {/* Soldiers */}
             <Grid item xs={12}>
               <Autocomplete
                 multiple
-                options={athletes}
+                options={soldiers}
                 getOptionLabel={(option) => `${option.firstname} ${option.lastname}`}
-                value={formData.selectedAthletes}
-                onChange={(event, newValue) => handleInputChange('selectedAthletes', newValue)}
+                value={formData.selectedSoldiers}
+                onChange={(event, newValue) => handleInputChange('selectedSoldiers', newValue)}
                 renderTags={(value, getTagProps) =>
                   value.map((option, index) => (
                     <Chip
@@ -408,8 +412,8 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Athletes"
-                    placeholder="Select athletes..."
+                    label="Soldiers"
+                    placeholder="Select soldiers..."
                     InputProps={{
                       ...params.InputProps,
                       startAdornment: (
@@ -444,7 +448,7 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Staff"
+                    label="Company 1"
                     placeholder="Select staff..."
                     InputProps={{
                       ...params.InputProps,
@@ -489,11 +493,11 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
                 sx={{
                   p: 2,
                   textAlign: 'center',
-                  border: '2px dashed #e8eaed',
-                  backgroundColor: '#fafafa',
+                  border: '2px dashed var(--color-border-primary)',
+                  backgroundColor: 'var(--color-background-secondary)',
                   cursor: 'pointer',
                   '&:hover': {
-                    backgroundColor: '#f5f5f5',
+                    backgroundColor: 'var(--color-background-tertiary)',
                   },
                 }}
                 onClick={() => document.getElementById('file-upload').click()}
@@ -541,10 +545,10 @@ const AddEventModal = ({ open, onClose, onSave, athletes = [], staff = [] }) => 
             onClick={handleSave}
             variant="contained"
             sx={{
-              backgroundColor: '#3a8dee',
+              backgroundColor: 'var(--color-primary)',
               textTransform: 'none',
               '&:hover': {
-                backgroundColor: '#0e478a',
+                backgroundColor: 'var(--color-primary-hover)',
               },
             }}
           >

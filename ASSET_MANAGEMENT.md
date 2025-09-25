@@ -84,7 +84,7 @@ const leagues = getAvailableLeagues()
 **Squad data** (`src/data/squads_teams.json`) includes team logos:
 ```json
 {
-  "name": "First Team",
+  "name": "Battalion 1",
   "logo": "arsenal",
   "league": "premier-league",
   "next_match": {

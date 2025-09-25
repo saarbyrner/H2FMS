@@ -24,7 +24,7 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "Head Coach"
       }
     ],
@@ -57,7 +57,7 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "Assistant Coach"
       }
     ],
@@ -90,12 +90,12 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "Team Doctor"
       },
       {
         "squad_id": 2,
-        "squad_name": "Reserve Team",
+        "squad_name": "Battalion 2",
         "role": "Team Doctor"
       }
     ],
@@ -128,7 +128,7 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "Physiotherapist"
       }
     ],
@@ -161,12 +161,12 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "S&C Coach"
       },
       {
         "squad_id": 2,
-        "squad_name": "Reserve Team",
+        "squad_name": "Battalion 2",
         "role": "S&C Coach"
       }
     ],
@@ -199,7 +199,7 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "Sports Psychologist"
       }
     ],
@@ -232,12 +232,12 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "Nutritionist"
       },
       {
         "squad_id": 2,
-        "squad_name": "Reserve Team",
+        "squad_name": "Battalion 2",
         "role": "Nutritionist"
       }
     ],
@@ -270,7 +270,7 @@
     "squads": [
       {
         "squad_id": 1,
-        "squad_name": "First Team",
+        "squad_name": "Battalion 1",
         "role": "Performance Analyst"
       }
     ],
@@ -311,7 +311,7 @@
     "email": "alex.thompson@medinahfc.com",
     "firstname": "Alex",
     "lastname": "Thompson",
-    "role": "Reserve Team Coach",
+    "role": "Battalion 2 Coach",
     "permission_group": "Coaching Staff",
     "is_active": true,
     "is_admin": false,
@@ -330,7 +330,7 @@
     "squads": [
       {
         "squad_id": 2,
-        "squad_name": "Reserve Team",
+        "squad_name": "Battalion 2",
         "role": "Head Coach"
       }
     ],

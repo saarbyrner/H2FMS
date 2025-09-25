@@ -123,7 +123,7 @@ export const nutritionWeekToEvents = (nutritionData, options = {}) => {
           extendedProps: {
             eventType: item.type === 'activity' ? 'TRAINING_SESSION' : 'NUTRITION',
             calendarCategory: 'Nutrition',
-            squad: 'Sarah Brown',
+            squad: 'Company 1.2',
             athleteId,
             day: dayKey,
             weekIndex: w,
@@ -136,6 +136,7 @@ export const nutritionWeekToEvents = (nutritionData, options = {}) => {
             summary: dailySummary,
             mealPercentOfDaily,
             location: 'Nutrition',
+            attendees: ['Sarah Brown'],
           },
         });
       });

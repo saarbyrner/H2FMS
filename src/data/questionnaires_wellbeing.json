@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "athlete_id": 1,
+    "soldier_id": 1,
     "athlete_name": "Marcus Johnson",
     "questionnaire_type": "Daily Wellbeing",
     "questionnaire_date": "2024-01-15",
@@ -66,7 +66,7 @@
   },
   {
     "id": 2,
-    "athlete_id": 2,
+    "soldier_id": 2,
     "athlete_name": "Elena Rodriguez",
     "questionnaire_type": "Injury Recovery",
     "questionnaire_date": "2024-01-14",
@@ -124,7 +124,7 @@
   },
   {
     "id": 3,
-    "athlete_id": 3,
+    "soldier_id": 3,
     "athlete_name": "David Chen",
     "questionnaire_type": "Pre-Training",
     "questionnaire_date": "2024-01-13",
@@ -182,7 +182,7 @@
   },
   {
     "id": 4,
-    "athlete_id": 4,
+    "soldier_id": 4,
     "athlete_name": "Sarah Williams",
     "questionnaire_type": "Match Day",
     "questionnaire_date": "2024-01-12",
@@ -240,7 +240,7 @@
   },
   {
     "id": 5,
-    "athlete_id": 5,
+    "soldier_id": 5,
     "athlete_name": "Alex Thompson",
     "questionnaire_type": "Post-Match",
     "questionnaire_date": "2024-01-05",
@@ -298,7 +298,7 @@
   },
   {
     "id": 6,
-    "athlete_id": 6,
+    "soldier_id": 6,
     "athlete_name": "Emma Davis",
     "questionnaire_type": "Nutrition Check",
     "questionnaire_date": "2024-01-10",

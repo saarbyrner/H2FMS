@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "athlete_id": 2,
+    "soldier_id": 2,
     "athlete_name": "Elena Rodriguez",
     "injury_type": "Knee Strain",
     "osics_code": "KNES01",
@@ -24,7 +24,7 @@
   },
   {
     "id": 2,
-    "athlete_id": 7,
+    "soldier_id": 7,
     "athlete_name": "James Wilson",
     "injury_type": "Hamstring Strain",
     "osics_code": "THPS01",
@@ -47,7 +47,7 @@
   },
   {
     "id": 3,
-    "athlete_id": 1,
+    "soldier_id": 1,
     "athlete_name": "Marcus Johnson",
     "injury_type": "Ankle Sprain",
     "osics_code": "AKLS01",
@@ -70,7 +70,7 @@
   },
   {
     "id": 4,
-    "athlete_id": 4,
+    "soldier_id": 4,
     "athlete_name": "Sarah Williams",
     "injury_type": "Concussion",
     "osics_code": "HCON01",
@@ -93,7 +93,7 @@
   },
   {
     "id": 5,
-    "athlete_id": 3,
+    "soldier_id": 3,
     "athlete_name": "David Chen",
     "injury_type": "Groin Strain",
     "osics_code": "HIPS01",

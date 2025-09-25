@@ -1,0 +1,33 @@
+/* Medical feature styles */
+.medical-dashboard {
+  background-color: var(--color-background-primary);
+}
+
+.medical-tab-content {
+  padding: var(--spacing-md);
+}
+
+.medical-table {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.medical-status-available {
+  color: var(--color-success);
+}
+
+.medical-status-limited {
+  color: var(--color-warning);
+}
+
+.medical-status-unavailable {
+  color: var(--color-error);
+}
+
+.medical-injury-none {
+  color: var(--color-success);
+}
+
+.medical-injury-present {
+  color: var(--color-error);
+}

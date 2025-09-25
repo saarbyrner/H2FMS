@@ -152,7 +152,7 @@ Events follow FullCalendar format with extended properties:
   textColor: "#ffffff",
   extendedProps: {
     type: "TRAINING_SESSION",
-    squad: { id: 1, name: "First Team" },
+    squad: { id: 1, name: "Battalion 1" },
     location: "Training Field 1",
     coach: "John Smith",
     // ... other properties

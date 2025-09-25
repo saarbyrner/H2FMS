@@ -1,0 +1,218 @@
+[
+  {
+    "id": 1,
+    "soldier_id": 1,
+    "soldier_name": "Marcus Johnson",
+    "evaluation_date": "2024-01-10",
+    "evaluation_type": "Mental Toughness Assessment",
+    "psychologist_id": 1,
+    "psychologist_name": "Dr. Sarah Chen",
+    "status": "Completed",
+    "scores": {
+      "mental_toughness": 7.2,
+      "confidence": 6.8,
+      "focus": 7.5,
+      "resilience": 6.9,
+      "motivation": 8.1,
+      "stress_management": 6.3
+    },
+    "overall_score": 7.1,
+    "summary": "Strong mental toughness with good focus and motivation. Areas for improvement in stress management and confidence building.",
+    "recommendations": [
+      "Continue mindfulness practice",
+      "Implement stress-reduction techniques",
+      "Focus on confidence-building exercises"
+    ],
+    "next_evaluation": "2024-04-10",
+    "notes": "Soldier shows excellent intrinsic motivation and focus during training. Stress management techniques need reinforcement before major competitions."
+  },
+  {
+    "id": 2,
+    "soldier_id": 3,
+    "soldier_name": "Emma Rodriguez",
+    "evaluation_date": "2024-01-08",
+    "evaluation_type": "Team Cohesion Assessment",
+    "psychologist_id": 2,
+    "psychologist_name": "Dr. Michael Thompson",
+    "status": "Completed",
+    "scores": {
+      "team_communication": 5.2,
+      "leadership": 6.8,
+      "conflict_resolution": 5.9,
+      "social_support": 6.1,
+      "team_bonding": 5.7,
+      "cooperation": 6.3
+    },
+    "overall_score": 6.0,
+    "summary": "Moderate team cohesion scores with room for improvement in communication and conflict resolution.",
+    "recommendations": [
+      "Participate in team-building activities",
+      "Practice assertive communication",
+      "Develop conflict resolution skills"
+    ],
+    "next_evaluation": "2024-04-08",
+    "notes": "Soldier has potential for leadership but needs support in communication skills. Recent team dynamics issues affecting performance."
+  },
+  {
+    "id": 3,
+    "soldier_id": 5,
+    "soldier_name": "James Wilson",
+    "evaluation_date": "2024-01-05",
+    "evaluation_type": "Injury Recovery Assessment",
+    "psychologist_id": 1,
+    "psychologist_name": "Dr. Sarah Chen",
+    "status": "In Progress",
+    "scores": {
+      "injury_acceptance": 4.8,
+      "recovery_motivation": 7.2,
+      "fear_avoidance": 6.1,
+      "confidence_rebuilding": 4.5,
+      "goal_setting": 6.8,
+      "support_seeking": 7.5
+    },
+    "overall_score": 6.1,
+    "summary": "Good recovery motivation but struggling with injury acceptance and confidence rebuilding.",
+    "recommendations": [
+      "Focus on gradual confidence building",
+      "Set realistic recovery milestones",
+      "Continue psychological support sessions"
+    ],
+    "next_evaluation": "2024-02-05",
+    "notes": "Soldier is motivated to return but needs support in managing fear of re-injury. Progress noted in recent sessions."
+  },
+  {
+    "id": 4,
+    "soldier_id": 2,
+    "soldier_name": "Sophie Anderson",
+    "evaluation_date": "2024-01-03",
+    "evaluation_type": "Performance Psychology Assessment",
+    "psychologist_id": 3,
+    "psychologist_name": "Dr. Lisa Park",
+    "status": "Completed",
+    "scores": {
+      "pre_competition_routine": 8.5,
+      "performance_anxiety": 7.8,
+      "concentration": 8.2,
+      "goal_orientation": 8.9,
+      "self_regulation": 7.6,
+      "mental_imagery": 8.1
+    },
+    "overall_score": 8.2,
+    "summary": "Excellent performance psychology profile with strong routines and goal orientation.",
+    "recommendations": [
+      "Maintain current psychological routines",
+      "Continue mental imagery practice",
+      "Share strategies with teammates"
+    ],
+    "next_evaluation": "2024-04-03",
+    "notes": "Outstanding psychological preparation. Soldier serves as a positive example for team psychological practices."
+  },
+  {
+    "id": 5,
+    "soldier_id": 4,
+    "soldier_name": "David Kim",
+    "evaluation_date": "2024-01-01",
+    "evaluation_type": "Sleep & Recovery Assessment",
+    "psychologist_id": 2,
+    "psychologist_name": "Dr. Michael Thompson",
+    "status": "Completed",
+    "scores": {
+      "sleep_quality": 5.1,
+      "recovery_perception": 5.8,
+      "stress_management": 6.2,
+      "relaxation_techniques": 4.9,
+      "energy_management": 6.5,
+      "work_life_balance": 6.8
+    },
+    "overall_score": 5.9,
+    "summary": "Below average sleep and recovery scores requiring immediate attention.",
+    "recommendations": [
+      "Implement sleep hygiene protocol",
+      "Learn relaxation techniques",
+      "Monitor sleep patterns daily"
+    ],
+    "next_evaluation": "2024-02-01",
+    "notes": "Sleep issues significantly impacting training performance. Priority intervention needed."
+  },
+  {
+    "id": 6,
+    "soldier_id": 6,
+    "soldier_name": "Olivia Brown",
+    "evaluation_date": "2023-12-28",
+    "evaluation_type": "Pressure Management Assessment",
+    "psychologist_id": 1,
+    "psychologist_name": "Dr. Sarah Chen",
+    "status": "Completed",
+    "scores": {
+      "external_pressure": 6.3,
+      "internal_pressure": 7.1,
+      "coping_strategies": 6.8,
+      "emotional_regulation": 7.4,
+      "support_utilization": 6.9,
+      "perspective_maintenance": 7.2
+    },
+    "overall_score": 7.0,
+    "summary": "Good pressure management with effective coping strategies and emotional regulation.",
+    "recommendations": [
+      "Continue current coping strategies",
+      "Develop additional pressure release techniques",
+      "Maintain support network"
+    ],
+    "next_evaluation": "2024-03-28",
+    "notes": "Soldier handles pressure well but media attention is increasing. Monitoring for signs of overwhelm."
+  },
+  {
+    "id": 7,
+    "soldier_id": 8,
+    "soldier_name": "Alex Taylor",
+    "evaluation_date": "2023-12-25",
+    "evaluation_type": "Confidence Assessment",
+    "psychologist_id": 3,
+    "psychologist_name": "Dr. Lisa Park",
+    "status": "Completed",
+    "scores": {
+      "self_confidence": 5.8,
+      "performance_confidence": 6.2,
+      "social_confidence": 7.1,
+      "decision_making": 6.5,
+      "risk_taking": 5.9,
+      "self_efficacy": 6.3
+    },
+    "overall_score": 6.3,
+    "summary": "Moderate confidence levels with room for improvement in performance and self-confidence.",
+    "recommendations": [
+      "Implement confidence-building exercises",
+      "Practice positive self-talk",
+      "Set achievable performance goals"
+    ],
+    "next_evaluation": "2024-03-25",
+    "notes": "Recent performance dip affected confidence. Working on rebuilding through small wins and positive reinforcement."
+  },
+  {
+    "id": 8,
+    "soldier_id": 7,
+    "soldier_name": "Ryan Davis",
+    "evaluation_date": "2023-12-22",
+    "evaluation_type": "Focus & Concentration Assessment",
+    "psychologist_id": 2,
+    "psychologist_name": "Dr. Michael Thompson",
+    "status": "Completed",
+    "scores": {
+      "sustained_attention": 6.7,
+      "selective_attention": 7.2,
+      "divided_attention": 5.8,
+      "concentration_under_pressure": 6.4,
+      "mindfulness": 6.1,
+      "distraction_management": 6.9
+    },
+    "overall_score": 6.5,
+    "summary": "Good focus abilities but struggles with divided attention and concentration under pressure.",
+    "recommendations": [
+      "Practice mindfulness techniques",
+      "Develop concentration exercises",
+      "Work on pressure simulation training"
+    ],
+    "next_evaluation": "2024-03-22",
+    "notes": "Focus is generally good but needs improvement in high-pressure situations. Mindfulness training showing early benefits."
+  }
+]

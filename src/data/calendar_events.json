@@ -10,9 +10,10 @@
     "url": "/planning_hub/events/5156926",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
-      "coach": "Kitman Labs"
+      "coach": "Kitman Labs",
+      "attendees": ["Marcus Johnson", "Elena Rodriguez", "David Chen", "Sarah Williams"]
     }
   },
   {
@@ -26,7 +27,7 @@
     "url": "/planning_hub/events/5156927",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
       "coach": "Kitman Labs"
     }
@@ -42,9 +43,10 @@
     "url": "/planning_hub/events/5155482",
     "extendedProps": {
       "eventType": "TEST_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 2",
       "location": "Testing Facility",
-      "coach": "Test Team"
+      "coach": "Test Team",
+      "attendees": ["Alex Thompson", "Maria Santos"]
     }
   },
   {
@@ -58,9 +60,10 @@
     "url": "/planning_hub/events/5160787",
     "extendedProps": {
       "eventType": "RECURRING_EVENT",
-      "squad": "International Squad",
+      "squad": "Company 1",
       "location": "Main Facility",
-      "coach": "Regular Coach"
+      "coach": "Regular Coach",
+      "attendees": ["Emma Thompson", "Amy Johnson"]
     }
   },
   {
@@ -74,9 +77,10 @@
     "url": "/planning_hub/events/5164041",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 3",
       "location": "Training Field",
-      "coach": "Kitman Labs"
+      "coach": "Kitman Labs",
+      "attendees": ["Ryan Murphy", "Sophie Clarke"]
     }
   },
   {
@@ -90,9 +94,10 @@
     "url": "/planning_hub/events/5164042",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
-      "coach": "Kitman Labs"
+      "coach": "Kitman Labs",
+      "attendees": ["Emma Davis", "James Wilson"]
     }
   },
   {
@@ -106,9 +111,10 @@
     "url": "/planning_hub/events/5163988",
     "extendedProps": {
       "eventType": "TEST_SESSION",
-      "squad": "International Squad",
+      "squad": "Company 1.2",
       "location": "Testing Facility",
-      "coach": "Test Team"
+      "coach": "Test Team",
+      "attendees": ["Sarah Brown"]
     }
   },
   {
@@ -122,9 +128,10 @@
     "url": "/planning_hub/events/5174051",
     "extendedProps": {
       "eventType": "TEST_SESSION",
-      "squad": "International Squad",
+      "squad": "Company 1.3",
       "location": "Testing Facility",
-      "coach": "Test Team"
+      "coach": "Test Team",
+      "attendees": ["Emma Taylor", "Jack Miller"]
     }
   },
   {
@@ -138,9 +145,10 @@
     "url": "/planning_hub/events/5162923",
     "extendedProps": {
       "eventType": "RECURRING_EVENT",
-      "squad": "International Squad",
+      "squad": "Company 2.1",
       "location": "Main Facility",
-      "coach": "Regular Coach"
+      "coach": "Regular Coach",
+      "attendees": ["Chris Anderson", "Laura White"]
     }
   },
   {
@@ -154,9 +162,10 @@
     "url": "/planning_hub/events/5179374",
     "extendedProps": {
       "eventType": "SERIES_EVENT",
-      "squad": "International Squad",
+      "squad": "Company 2.2",
       "location": "Series Venue",
-      "coach": "Series Coach"
+      "coach": "Series Coach",
+      "attendees": ["Ryan Murphy", "Sophie Clarke"]
     }
   },
   {
@@ -170,9 +179,10 @@
     "url": "/planning_hub/events/5156166",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Company 2.3",
       "location": "Training Field",
-      "coach": "Kitman Labs"
+      "coach": "Kitman Labs",
+      "attendees": ["Jake Roberts", "Mia Johnson"]
     }
   },
   {
@@ -186,9 +196,10 @@
     "url": "/planning_hub/events/5173387",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Company 3.1",
       "location": "Training Field",
-      "coach": "Kitman Labs"
+      "coach": "Kitman Labs",
+      "attendees": ["James Wilson", "Elena Rodriguez"]
     }
   },
   {
@@ -202,9 +213,10 @@
     "url": "/planning_hub/events/5173344",
     "extendedProps": {
       "eventType": "TEST_SESSION",
-      "squad": "International Squad",
+      "squad": "Company 3.2",
       "location": "Testing Facility",
-      "coach": "Test Team"
+      "coach": "Test Team",
+      "attendees": ["Emma Thompson", "Amy Johnson"]
     }
   },
   {
@@ -218,9 +230,10 @@
     "url": "/planning_hub/events/5178991",
     "extendedProps": {
       "eventType": "RECURRING_EVENT",
-      "squad": "International Squad",
+      "squad": "Company 3.3",
       "location": "Main Facility",
-      "coach": "Regular Coach"
+      "coach": "Regular Coach",
+      "attendees": ["Sophie Martinez", "Tom Anderson"]
     }
   },
   {
@@ -234,7 +247,7 @@
     "url": "/planning_hub/events/5183353",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
       "coach": "Kitman Labs"
     }
@@ -250,7 +263,7 @@
     "url": "/planning_hub/events/5156228",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
       "coach": "Kitman Labs"
     }
@@ -266,7 +279,7 @@
     "url": "/planning_hub/events/5183310",
     "extendedProps": {
       "eventType": "TEST_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Testing Facility",
       "coach": "Test Team"
     }
@@ -282,7 +295,7 @@
     "url": "/planning_hub/events/5185297",
     "extendedProps": {
       "eventType": "RECURRING_EVENT",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Main Facility",
       "coach": "Regular Coach"
     }
@@ -298,7 +311,7 @@
     "url": "/planning_hub/events/5156166",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
       "coach": "Kitman Labs"
     }
@@ -314,7 +327,7 @@
     "url": "/planning_hub/events/5156208",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
       "coach": "Kitman Labs"
     }
@@ -330,7 +343,7 @@
     "url": "/planning_hub/events/4864755",
     "extendedProps": {
       "eventType": "TEST_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Testing Facility",
       "coach": "Test Team"
     }
@@ -346,7 +359,7 @@
     "url": "/planning_hub/events/5159804",
     "extendedProps": {
       "eventType": "RECURRING_EVENT",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Main Facility",
       "coach": "Regular Coach"
     }
@@ -362,7 +375,7 @@
     "url": "/planning_hub/events/5156166",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
       "coach": "Kitman Labs"
     }
@@ -378,7 +391,7 @@
     "url": "/planning_hub/events/5156208",
     "extendedProps": {
       "eventType": "TRAINING_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Training Field",
       "coach": "Kitman Labs"
     }
@@ -394,7 +407,7 @@
     "url": "/planning_hub/events/5174078",
     "extendedProps": {
       "eventType": "TEST_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Testing Facility",
       "coach": "Test Team"
     }
@@ -410,7 +423,7 @@
     "url": "/planning_hub/events/5174081",
     "extendedProps": {
       "eventType": "RECURRING_EVENT",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Main Facility",
       "coach": "Regular Coach"
     }

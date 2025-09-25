@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useLocation, useNavigate } from 'react-router-dom'
-import H2FWordmarkLogo from '/public/assets/logos/teams/h2fms/icon-app-itunes-1024x1024 wordmark.png'
+import H2FWordmarkLogo from '/assets/logos/teams/h2fms/icon-app-itunes-1024x1024 wordmark.png'
 import {
   Drawer,
   Box,
@@ -22,14 +22,36 @@ import {
   CalendarMonthOutlined,
   HistoryOutlined,
   SettingsOutlined,
-  HelpOutlined,
   ChevronLeftOutlined,
-  ChevronRightOutlined
+  ChevronRightOutlined,
+  RestaurantOutlined,
+  PsychologyOutlined
 } from '@mui/icons-material'
 import '../styles/design-tokens.css'
 
 // Navigation items configuration
 const navigationItems = [
+  { 
+    id: 'soldiers', 
+    label: 'Soldiers', 
+    icon: PeopleOutlined, 
+    path: '/soldier',
+    section: 'main'
+  },
+  { 
+    id: 'divider-1', 
+    label: '', 
+    icon: null, 
+    path: '',
+    section: 'divider'
+  },
+  { 
+    id: 'physical', 
+    label: 'Physical', 
+    icon: FitnessCenterOutlined, 
+    path: '/physical',
+    section: 'main'
+  },
   { 
     id: 'medical', 
     label: 'Medical', 
@@ -38,31 +60,31 @@ const navigationItems = [
     section: 'main'
   },
   { 
+    id: 'nutrition', 
+    label: 'Nutrition', 
+    icon: RestaurantOutlined,
+    path: '/nutrition',
+    section: 'main'
+  },
+  { 
+    id: 'psychological', 
+    label: 'Psychological', 
+    icon: PsychologyOutlined,
+    path: '/psychological',
+    section: 'main'
+  },
+  { 
+    id: 'divider-2', 
+    label: '', 
+    icon: null, 
+    path: '',
+    section: 'divider'
+  },
+  { 
     id: 'analysis', 
     label: 'Analysis', 
     icon: AnalyticsOutlined, 
     path: '/analysis',
-    section: 'main'
-  },
-  { 
-    id: 'athletes', 
-    label: 'Athletes', 
-    icon: PeopleOutlined, 
-    path: '/athlete',
-    section: 'main'
-  },
-  { 
-    id: 'workload', 
-    label: 'Workload', 
-    icon: FitnessCenterOutlined, 
-    path: '/workloads',
-    section: 'main'
-  },
-  { 
-    id: 'forms', 
-    label: 'Forms', 
-    icon: AssignmentOutlined, 
-    path: '/questionnaires',
     section: 'main'
   },
   { 
@@ -73,27 +95,20 @@ const navigationItems = [
     section: 'main'
   },
   { 
-    id: 'activity-log', 
-    label: 'Activity log', 
-    icon: HistoryOutlined, 
-    path: '/activity',
-    section: 'main'
-  },
-  { 
-    id: 'admin', 
-    label: 'Admin', 
-    icon: SettingsOutlined, 
-    path: '/settings',
+    id: 'forms', 
+    label: 'Forms', 
+    icon: AssignmentOutlined, 
+    path: '/questionnaires',
     section: 'main'
   }
 ]
 
 const bottomItems = [
   { 
-    id: 'help', 
-    label: 'Help', 
-    icon: HelpOutlined, 
-    path: '/help'
+    id: 'settings', 
+    label: 'Settings', 
+    icon: SettingsOutlined, 
+    path: '/settings'
   }
 ]
 
@@ -114,6 +129,26 @@ function MainNavigation({
   }
 
   const renderNavItem = (item, isCollapsed = false) => {
+    // Handle divider items
+    if (item.section === 'divider') {
+      return (
+        <ListItem 
+          key={item.id} 
+          disablePadding 
+          sx={{ display: 'block' }}
+        >
+          <Box
+            sx={{
+              height: 1.5,
+              backgroundColor: 'rgba(33, 33, 33, 0.9)',
+              mx: 2,
+              my: 1
+            }}
+          />
+        </ListItem>
+      )
+    }
+
     const isActive = location.pathname === item.path
     const IconComponent = item.icon
 
@@ -134,9 +169,9 @@ function MainNavigation({
               height: 40,
               justifyContent: isCollapsed ? 'center' : 'initial',
               pl: 2,
-              py: 1,
+              py: 0.5,
               ml: 1, mr: 0,
-              mb: 0.5,
+              mb: 0.25,
               position: 'relative',
               backgroundColor: isActive ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
               color: '#ffffff',
@@ -147,7 +182,7 @@ function MainNavigation({
                 top: 0,
                 bottom: 0,
                 width: '3px',
-                backgroundColor: '#ffffff',
+                backgroundColor: '#FFCC02',
                 borderRadius: '0 2px 2px 0'
               } : {},
               '&:hover': {
@@ -228,14 +263,14 @@ function MainNavigation({
 
       {/* Main Navigation Items */}
       <Box sx={{ flex: 1, overflow: 'auto' }}>
-        <List sx={{ py: 1 }}>
+        <List sx={{ py: 0.5 }}>
           {navigationItems.map((item) => renderNavItem(item, !isOpen))}
         </List>
       </Box>
 
       {/* Bottom Items */}
       <Box>
-        <List sx={{ py: 1 }}>
+        <List sx={{ py: 0.5 }}>
           {bottomItems.map((item) => renderNavItem(item, !isOpen))}
         </List>
         

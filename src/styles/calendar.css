@@ -184,6 +184,7 @@
 
 .fc .fc-daygrid-day {
   position: relative;
+  overflow: visible;
 }
 
 .fc .fc-daygrid-day-number {
@@ -200,6 +201,11 @@
   font-size: 12px;
   font-weight: 500;
   text-decoration: none;
+  position: relative;
+  z-index: 10;
+  display: block;
+  padding: 2px 4px;
+  margin-top: 2px;
 }
 
 .fc .fc-daygrid-more-link:hover {
@@ -376,12 +382,13 @@
 .fc .fc-daygrid-day-frame {
   min-height: 120px !important;
   height: 120px !important;
+  overflow: visible;
 }
 
 .fc .fc-daygrid-day-events {
   min-height: 80px !important;
   max-height: 80px !important;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .fc .fc-daygrid-day-bg {
@@ -447,6 +454,17 @@
   padding: 0 2px !important;
   line-height: 1.2;
 }
+
+/* Force-hide all-day row (safety net) */
+.fc .fc-timegrid-allday, .fc .fc-timegrid-all-day, .fc .fc-timegrid-allday-events {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
 
 /* Calendar column headers */
 .calendar__columnHeaderDay {

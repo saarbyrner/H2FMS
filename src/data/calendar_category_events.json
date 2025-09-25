@@ -10,7 +10,7 @@
     "extendedProps": {
       "calendarCategory": "Nutrition",
       "eventType": "NUTRITION_SESSION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Dining Hall",
       "details": "Emphasis on lean proteins and complex carbs"
     }
@@ -26,7 +26,7 @@
     "extendedProps": {
       "calendarCategory": "Nutrition",
       "eventType": "NUTRITION_BRIEFING",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Nutrition Office",
       "details": "High GI carbohydrate focus"
     }
@@ -42,7 +42,7 @@
     "extendedProps": {
       "calendarCategory": "Sleep",
       "eventType": "SLEEP_EDUCATION",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Auditorium",
       "details": "Blue light mitigation & circadian rhythms"
     }
@@ -58,7 +58,7 @@
     "extendedProps": {
       "calendarCategory": "Sleep",
       "eventType": "SLEEP_SESSION",
-      "squad": "Player A",
+      "squad": "Battalion 2",
       "location": "Meeting Room 2",
       "details": "Review sleep tracker data"
     }
@@ -74,7 +74,7 @@
     "extendedProps": {
       "calendarCategory": "Physical",
       "eventType": "PHYSICAL_STRENGTH",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Performance Gym",
       "details": "Lower body strength & power"
     }
@@ -90,7 +90,7 @@
     "extendedProps": {
       "calendarCategory": "Physical",
       "eventType": "PHYSICAL_SPEED",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Outdoor Track",
       "details": "10-30m acceleration focus"
     }
@@ -106,7 +106,7 @@
     "extendedProps": {
       "calendarCategory": "Spiritual",
       "eventType": "SPIRITUAL_MINDFULNESS",
-      "squad": "All Players",
+        "squad": "Battalion 1",
       "location": "Wellness Room",
       "details": "Breathing and grounding session"
     }
@@ -122,7 +122,7 @@
     "extendedProps": {
       "calendarCategory": "Spiritual",
       "eventType": "SPIRITUAL_TEAM_CULTURE",
-      "squad": "Leadership Group",
+      "squad": "Company 1",
       "location": "Conference Room",
       "details": "Core values alignment"
     }
@@ -138,7 +138,7 @@
     "extendedProps": {
       "calendarCategory": "Mental",
       "eventType": "MENTAL_SKILLS",
-      "squad": "Individual Session",
+      "squad": "Battalion 3",
       "location": "Psych Office",
       "details": "Focus & visualization"
     }
@@ -154,7 +154,7 @@
     "extendedProps": {
       "calendarCategory": "Mental",
       "eventType": "MENTAL_TEAM",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Auditorium",
       "details": "Stress inoculation drills"
     }
@@ -170,7 +170,7 @@
     "extendedProps": {
       "calendarCategory": "Medical",
       "eventType": "MEDICAL_SCREENING",
-      "squad": "International Squad",
+      "squad": "Battalion 1",
       "location": "Medical Suite",
       "details": "Orthopedic & movement screen"
     }
@@ -186,7 +186,7 @@
     "extendedProps": {
       "calendarCategory": "Medical",
       "eventType": "MEDICAL_REHAB",
-      "squad": "Player B",
+      "squad": "Company 1.2",
       "location": "Treatment Room 1",
       "details": "Return to play criteria review"
     }

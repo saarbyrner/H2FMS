@@ -1,0 +1,1056 @@
+[
+    {
+      "id": "training-001",
+      "title": "Team Training — Tactical Prep",
+      "start": "2025-09-29T10:00:00",
+      "end": "2025-09-29T11:30:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "TRAINING_TACTICAL",
+        "calendarCategory": "Training",
+        "squad": "Battalion 1",
+        "location": "Pitch A",
+        "coach": "Head Coach Rivera",
+        "attendees": ["Squad A"],
+        "details": "11v11 pattern play, mid-block press rehearsal",
+        "activity": {
+          "focus": "Tactical",
+          "drills": ["Build-up 3rd", "Mid-block traps", "Set-piece shape"]
+        }
+      }
+    },
+    {
+      "id": "physical-001",
+      "title": "Gym — Lower Body Strength",
+      "start": "2025-09-29T08:30:00",
+      "end": "2025-09-29T09:30:00",
+      "backgroundColor": "#2d9cdb",
+      "borderColor": "#1b6fa0",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PHYSICAL_STRENGTH",
+        "calendarCategory": "Physical",
+        "squad": "Battalion 1",
+        "location": "Performance Gym",
+        "coach": "S&C Coach Li",
+        "attendees": ["Player 1", "Player 2", "Player 3"],
+        "details": "Trap bar DL, split squats, Nordic curls, power work"
+      }
+    },
+    {
+      "id": "medical-001",
+      "title": "MSK Screening — Hamstring",
+      "start": "2025-09-29T12:00:00",
+      "end": "2025-09-29T12:30:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_SCREENING",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 1",
+        "location": "Medical Suite 1",
+        "coach": "Dr. Ahmed",
+        "attendees": ["Player 7"],
+        "details": "NordBord test + ROM assessment post-match"
+      }
+    },
+    {
+      "id": "psych-001",
+      "title": "Psychology — Focus & Routines",
+      "start": "2025-09-29T16:00:00",
+      "end": "2025-09-29T16:45:00",
+      "backgroundColor": "#e74d3d",
+      "borderColor": "#c0392b",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PSYCHOLOGICAL_SESSION",
+        "calendarCategory": "Psychological",
+        "squad": "Battalion 1",
+        "location": "Mind Room",
+        "coach": "Dr. Williams",
+        "attendees": ["Player 10"],
+        "details": "Pre-kickoff routines, attentional control, cue words"
+      }
+    },
+    {
+      "id": "sleep-001",
+      "title": "Sleep — Target 8h (Wearable Logged)",
+      "start": "2025-09-29T23:00:00",
+      "end": "2025-09-30T07:00:00",
+      "backgroundColor": "#6c5ce7",
+      "borderColor": "#4b3cb3",
+      "textColor": "#ffffff",
+      "allDay": false,
+      "extendedProps": {
+        "eventType": "SLEEP_TRACK",
+        "calendarCategory": "Sleep",
+        "squad": "Battalion 1",
+        "location": "Home",
+        "attendees": [],
+        "details": "Sleep hygiene focus: cool room, devices off 60m before",
+        "summary": {
+          "targetHours": 8,
+          "sleepWindow": "23:00-07:00"
+        }
+      }
+    },
+    {
+      "id": "appt-001",
+      "title": "Admin Appointment — Passport Pickup",
+      "start": "2025-09-29T14:30:00",
+      "end": "2025-09-29T14:50:00",
+      "backgroundColor": "#95a5a6",
+      "borderColor": "#7f8c8d",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "APPOINTMENT_ADMIN",
+        "calendarCategory": "Appointments",
+        "squad": "Company 1",
+        "location": "City Office",
+        "attendees": ["Team Manager"],
+        "details": "Travel documents for next away fixture"
+      }
+    },
+    {
+      "id": "nut-001",
+      "title": "BF 550kcal — Oats + Yogurt",
+      "start": "2025-09-29T07:30:00",
+      "end": "2025-09-29T07:50:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Dining Hall",
+        "athleteId": 11,
+        "day": "monday",
+        "weekIndex": 0,
+        "originalTitle": "Breakfast",
+        "nutrition": {
+          "calories": 550,
+          "protein": 32,
+          "carbs": 70,
+          "fat": 16,
+          "fiber": 9
+        },
+        "mealPercentOfDaily": 24,
+        "attendees": ["Nutritionist Sarah"],
+        "details": "Add berries + honey; hydrate 500 ml"
+      }
+    },
+    {
+      "id": "nut-002",
+      "title": "Lunch 800kcal — Chicken Grain Bowl",
+      "start": "2025-09-29T13:00:00",
+      "end": "2025-09-29T13:30:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Dining Hall",
+        "athleteId": 11,
+        "day": "monday",
+        "weekIndex": 0,
+        "originalTitle": "Lunch",
+        "nutrition": {
+          "calories": 800,
+          "protein": 55,
+          "carbs": 90,
+          "fat": 24
+        },
+        "mealPercentOfDaily": 34,
+        "fueling": {
+          "goal": "Glycogen repletion",
+          "hydration_ml": 600
+        }
+      }
+    },
+  
+    {
+      "id": "training-002",
+      "title": "Team Training — Attacking Patterns",
+      "start": "2025-09-30T10:00:00",
+      "end": "2025-09-30T11:30:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "TRAINING_TECHNICAL",
+        "calendarCategory": "Training",
+        "squad": "Battalion 1",
+        "location": "Pitch B",
+        "coach": "Assistant Coach Park",
+        "attendees": ["Squad A"],
+        "details": "Final third combinations, wide overloads, finishing"
+      }
+    },
+    {
+      "id": "physical-002",
+      "title": "Conditioning — Tempo Runs",
+      "start": "2025-09-30T09:00:00",
+      "end": "2025-09-30T09:40:00",
+      "backgroundColor": "#2d9cdb",
+      "borderColor": "#1b6fa0",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PHYSICAL_CONDITIONING",
+        "calendarCategory": "Physical",
+        "squad": "Battalion 1",
+        "location": "Track",
+        "coach": "S&C Coach Li",
+        "attendees": ["Conditioning Group 1"],
+        "details": "4×6’ at 85–88% MAS; 2’ float between"
+      }
+    },
+    {
+      "id": "medical-002",
+      "title": "Treatment — Soft Tissue",
+      "start": "2025-09-30T12:15:00",
+      "end": "2025-09-30T12:45:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_TREATMENT",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 1",
+        "location": "Treatment Room 2",
+        "coach": "Physio Marta",
+        "attendees": ["Player 4"],
+        "details": "Soft tissue therapy for calf tightness"
+      }
+    },
+    {
+      "id": "psych-002",
+      "title": "Group Psych — Communication",
+      "start": "2025-09-30T15:00:00",
+      "end": "2025-09-30T15:45:00",
+      "backgroundColor": "#e74d3d",
+      "borderColor": "#c0392b",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PSYCHOLOGICAL_GROUP",
+        "calendarCategory": "Psychological",
+        "squad": "Battalion 1",
+        "location": "Meeting Room",
+        "coach": "Dr. Williams",
+        "attendees": ["Leadership Group"],
+        "details": "Huddles, feedback loops, emotional regulation"
+      }
+    },
+    {
+      "id": "sleep-002",
+      "title": "Sleep — Target 8h (Wearable Logged)",
+      "start": "2025-09-30T23:00:00",
+      "end": "2025-10-01T07:00:00",
+      "backgroundColor": "#6c5ce7",
+      "borderColor": "#4b3cb3",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "SLEEP_TRACK",
+        "calendarCategory": "Sleep",
+        "squad": "Battalion 1",
+        "location": "Home",
+        "attendees": [],
+        "summary": {
+          "targetHours": 8,
+          "notes": "Blue-light glasses 90m pre-bed"
+        }
+      }
+    },
+    {
+      "id": "appt-002",
+      "title": "Sponsor Call",
+      "start": "2025-09-30T17:00:00",
+      "end": "2025-09-30T17:30:00",
+      "backgroundColor": "#95a5a6",
+      "borderColor": "#7f8c8d",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "APPOINTMENT_MEDIA",
+        "calendarCategory": "Appointments",
+        "squad": "Battalion 1",
+        "location": "Video Conference",
+        "attendees": ["Media Officer", "Brand Rep"],
+        "details": "Campaign deliverables Q4"
+      }
+    },
+    {
+      "id": "nut-003",
+      "title": "BF 500kcal — Eggs & Toast",
+      "start": "2025-09-30T07:40:00",
+      "end": "2025-09-30T07:55:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Dining Hall",
+        "athleteId": 12,
+        "day": "tuesday",
+        "weekIndex": 0,
+        "originalTitle": "Breakfast",
+        "nutrition": {
+          "calories": 500,
+          "protein": 30,
+          "carbs": 50,
+          "fat": 18
+        },
+        "mealPercentOfDaily": 22
+      }
+    },
+    {
+      "id": "nut-004",
+      "title": "Snack 250kcal — Smoothie",
+      "start": "2025-09-30T11:30:00",
+      "end": "2025-09-30T11:40:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Gym Bar",
+        "athleteId": 12,
+        "day": "tuesday",
+        "weekIndex": 0,
+        "originalTitle": "Snack",
+        "nutrition": {
+          "calories": 250,
+          "protein": 18,
+          "carbs": 32,
+          "fat": 6
+        },
+        "mealPercentOfDaily": 11,
+        "fueling": {
+          "goal": "Recovery",
+          "carb_g_per_kg": 0.6
+        }
+      }
+    },
+  
+    {
+      "id": "training-003",
+      "title": "Team Training — Set Pieces",
+      "start": "2025-10-01T10:30:00",
+      "end": "2025-10-01T11:30:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "TRAINING_SETPIECES",
+        "calendarCategory": "Training",
+        "squad": "Battalion 1",
+        "location": "Pitch A",
+        "coach": "Set-Piece Coach Novak",
+        "attendees": ["Squad A"],
+        "details": "Corners near post, free-kicks edge of box"
+      }
+    },
+    {
+      "id": "physical-003",
+      "title": "Mobility & Prehab",
+      "start": "2025-10-01T09:30:00",
+      "end": "2025-10-01T10:00:00",
+      "backgroundColor": "#2d9cdb",
+      "borderColor": "#1b6fa0",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PHYSICAL_PREHAB",
+        "calendarCategory": "Physical",
+        "squad": "Battalion 1",
+        "location": "Recovery Zone",
+        "coach": "S&C Coach Li",
+        "attendees": ["All available"],
+        "details": "Hips & ankles; banded work; breathing"
+      }
+    },
+    {
+      "id": "medical-003",
+      "title": "Ortho Consult — Knee Follow-up",
+      "start": "2025-10-01T12:30:00",
+      "end": "2025-10-01T13:00:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_CONSULT",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 1",
+        "location": "Clinic",
+        "coach": "Dr. Ahmed",
+        "attendees": ["Player 6"],
+        "details": "MRI review + graded RTP progress"
+      }
+    },
+    {
+      "id": "psych-003",
+      "title": "1:1 Psych — Confidence Reframe",
+      "start": "2025-10-01T15:30:00",
+      "end": "2025-10-01T16:00:00",
+      "backgroundColor": "#e74d3d",
+      "borderColor": "#c0392b",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PSYCHOLOGICAL_SESSION",
+        "calendarCategory": "Psychological",
+        "squad": "Battalion 1",
+        "location": "Mind Room",
+        "coach": "Dr. Williams",
+        "attendees": ["Player 9"],
+        "details": "Cognitive reframing, performance imagery"
+      }
+    },
+    {
+      "id": "sleep-003",
+      "title": "Nap — 25 min",
+      "start": "2025-10-01T14:00:00",
+      "end": "2025-10-01T14:25:00",
+      "backgroundColor": "#6c5ce7",
+      "borderColor": "#4b3cb3",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "SLEEP_NAP",
+        "calendarCategory": "Sleep",
+        "squad": "Battalion 1",
+        "location": "Recovery Room",
+        "attendees": [],
+        "details": "Short nap; caffeine before optional"
+      }
+    },
+    {
+      "id": "appt-003",
+      "title": "Dental Check",
+      "start": "2025-10-01T17:15:00",
+      "end": "2025-10-01T17:35:00",
+      "backgroundColor": "#95a5a6",
+      "borderColor": "#7f8c8d",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "APPOINTMENT_HEALTH",
+        "calendarCategory": "Appointments",
+        "squad": "Battalion 1",
+        "location": "City Dental",
+        "attendees": ["Player 2"],
+        "details": "Routine clean"
+      }
+    },
+    {
+      "id": "nut-005",
+      "title": "Matchday-1 Dinner 900kcal — Pasta + Fish",
+      "start": "2025-10-01T19:00:00",
+      "end": "2025-10-01T19:30:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Hotel Buffet",
+        "athleteId": 11,
+        "day": "wednesday",
+        "weekIndex": 0,
+        "originalTitle": "Dinner",
+        "nutrition": {
+          "calories": 900,
+          "protein": 45,
+          "carbs": 130,
+          "fat": 22
+        },
+        "mealPercentOfDaily": 38,
+        "fueling": {
+          "goal": "Carb load MD-1",
+          "sodium_mg": 800
+        }
+      }
+    },
+  
+    {
+      "id": "training-004",
+      "title": "Activation — Matchday",
+      "start": "2025-10-02T10:30:00",
+      "end": "2025-10-02T11:00:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "TRAINING_ACTIVATION",
+        "calendarCategory": "Training",
+        "squad": "Battalion 1",
+        "location": "Pitch A",
+        "coach": "S&C Coach Li",
+        "attendees": ["Matchday Squad"],
+        "details": "Primers, mobility, light technical touches"
+      }
+    },
+    {
+      "id": "physical-004",
+      "title": "Pre-Match Primer",
+      "start": "2025-10-02T11:00:00",
+      "end": "2025-10-02T11:20:00",
+      "backgroundColor": "#2d9cdb",
+      "borderColor": "#1b6fa0",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PHYSICAL_PRIMER",
+        "calendarCategory": "Physical",
+        "squad": "Battalion 1",
+        "location": "Warm-up Zone",
+        "coach": "S&C Coach Li",
+        "attendees": ["Starters"],
+        "details": "RAMP warm-up, 2×30m builds"
+      }
+    },
+    {
+      "id": "medical-004",
+      "title": "Strapping & Taping",
+      "start": "2025-10-02T12:00:00",
+      "end": "2025-10-02T12:20:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_SUPPORT",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 1",
+        "location": "Medical Room",
+        "coach": "Physio Marta",
+        "attendees": ["Starters"],
+        "details": "Ankles, thumbs as required"
+      }
+    },
+    {
+      "id": "sleep-004",
+      "title": "Post-Match Sleep Window",
+      "start": "2025-10-02T23:30:00",
+      "end": "2025-10-03T07:30:00",
+      "backgroundColor": "#6c5ce7",
+      "borderColor": "#4b3cb3",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "SLEEP_TRACK",
+        "calendarCategory": "Sleep",
+        "squad": "Battalion 1",
+        "location": "Home/Hotel",
+        "attendees": [],
+        "details": "Consider magnesium + low-dose melatonin per protocol"
+      }
+    },
+    {
+      "id": "nut-006",
+      "title": "Pre-Match Meal 700kcal",
+      "start": "2025-10-02T13:00:00",
+      "end": "2025-10-02T13:30:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Stadium Kitchen",
+        "athleteId": 14,
+        "day": "thursday",
+        "weekIndex": 0,
+        "originalTitle": "Pre-Match",
+        "nutrition": {
+          "calories": 700,
+          "protein": 30,
+          "carbs": 110,
+          "fat": 15
+        },
+        "mealPercentOfDaily": 30,
+        "fueling": {
+          "goal": "Pre-match fueling",
+          "timing_min_before": 180
+        }
+      }
+    },
+    {
+      "id": "training-005",
+      "title": "MATCH — League Fixture",
+      "start": "2025-10-02T19:00:00",
+      "end": "2025-10-02T21:00:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "url": "https://club.example.com/fixtures/2025-10-02",
+      "extendedProps": {
+        "eventType": "TRAINING_MATCH",
+        "calendarCategory": "Training",
+        "squad": "Battalion 1",
+        "location": "Home Stadium",
+        "coach": "Head Coach Rivera",
+        "attendees": ["Matchday Squad", "Company 1"],
+        "details": "Matchday logistics per ops sheet"
+      }
+    },
+    {
+      "id": "medical-005",
+      "title": "Immediate Post-Match Recovery",
+      "start": "2025-10-02T21:10:00",
+      "end": "2025-10-02T21:40:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_RECOVERY",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 1",
+        "location": "Recovery Zone",
+        "coach": "Physio Team",
+        "attendees": ["Matchday Squad"],
+        "details": "Cold tubs, compression, wound care as needed"
+      }
+    },
+    {
+      "id": "nut-007",
+      "title": "Post-Match Shake 350kcal",
+      "start": "2025-10-02T21:05:00",
+      "end": "2025-10-02T21:15:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Stadium Tunnel",
+        "athleteId": 14,
+        "day": "thursday",
+        "weekIndex": 0,
+        "originalTitle": "Recovery Shake",
+        "nutrition": {
+          "calories": 350,
+          "protein": 30,
+          "carbs": 45,
+          "fat": 6
+        },
+        "mealPercentOfDaily": 15,
+        "fueling": {
+          "goal": "Rapid recovery",
+          "protein_timing": "Within 30 min"
+        }
+      }
+    },
+  
+    {
+      "id": "training-006",
+      "title": "Recovery — Low Intensity",
+      "start": "2025-10-03T10:30:00",
+      "end": "2025-10-03T11:00:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "TRAINING_RECOVERY",
+        "calendarCategory": "Training",
+        "squad": "Battalion 1",
+        "location": "Indoor Turf",
+        "coach": "Assistant Coach Park",
+        "attendees": ["Starters ≤60min", "Non-starters"],
+        "details": "Cycle flush + mobility flow"
+      }
+    },
+    {
+      "id": "physical-005",
+      "title": "Gym — Upper Body Strength",
+      "start": "2025-10-03T09:30:00",
+      "end": "2025-10-03T10:15:00",
+      "backgroundColor": "#2d9cdb",
+      "borderColor": "#1b6fa0",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PHYSICAL_STRENGTH",
+        "calendarCategory": "Physical",
+        "squad": "Battalion 2",
+        "location": "Performance Gym",
+        "coach": "S&C Coach Li",
+        "attendees": ["Bench Unit"],
+        "details": "Push–pull superset; power finishers"
+      }
+    },
+    {
+      "id": "medical-006",
+      "title": "RTP Step Check — Ankle",
+      "start": "2025-10-03T12:00:00",
+      "end": "2025-10-03T12:20:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_RTP",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 1",
+        "location": "Performance Lab",
+        "coach": "Physio Marta",
+        "attendees": ["Player 16"],
+        "details": "Hops test + balance metrics"
+      }
+    },
+    {
+      "id": "psych-004",
+      "title": "Psych Debrief — Match Reflection",
+      "start": "2025-10-03T15:00:00",
+      "end": "2025-10-03T15:30:00",
+      "backgroundColor": "#e74d3d",
+      "borderColor": "#c0392b",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PSYCHOLOGICAL_DEBRIEF",
+        "calendarCategory": "Psychological",
+        "squad": "Battalion 1",
+        "location": "Meeting Room",
+        "coach": "Dr. Williams",
+        "attendees": ["Starters"],
+        "details": "What went well / to improve; action items"
+      }
+    },
+    {
+      "id": "sleep-005",
+      "title": "Sleep — Target 8.5h",
+      "start": "2025-10-03T22:30:00",
+      "end": "2025-10-04T07:00:00",
+      "backgroundColor": "#6c5ce7",
+      "borderColor": "#4b3cb3",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "SLEEP_TRACK",
+        "calendarCategory": "Sleep",
+        "squad": "Battalion 1",
+        "location": "Home",
+        "attendees": [],
+        "summary": {
+          "targetHours": 8.5
+        }
+      }
+    },
+    {
+      "id": "appt-004",
+      "title": "Community Appearance",
+      "start": "2025-10-03T17:30:00",
+      "end": "2025-10-03T18:30:00",
+      "backgroundColor": "#95a5a6",
+      "borderColor": "#7f8c8d",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "APPOINTMENT_COMMUNITY",
+        "calendarCategory": "Appointments",
+        "squad": "Battalion 1",
+        "location": "Local School",
+        "attendees": ["Players 3,5,8"],
+        "details": "Clinic + Q&A"
+      }
+    },
+    {
+      "id": "nut-008",
+      "title": "Lunch 750kcal — Rice + Beef",
+      "start": "2025-10-03T13:00:00",
+      "end": "2025-10-03T13:25:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Dining Hall",
+        "athleteId": 15,
+        "day": "friday",
+        "weekIndex": 0,
+        "originalTitle": "Lunch",
+        "nutrition": {
+          "calories": 750,
+          "protein": 50,
+          "carbs": 95,
+          "fat": 20
+        },
+        "mealPercentOfDaily": 32
+      }
+    },
+  
+    {
+      "id": "training-007",
+      "title": "Technical — Rondo & Small Sided",
+      "start": "2025-10-04T10:00:00",
+      "end": "2025-10-04T11:15:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "TRAINING_TECHNICAL",
+        "calendarCategory": "Training",
+        "squad": "Battalion 3",
+        "location": "Pitch C",
+        "coach": "Coach Ortega",
+        "attendees": ["Youth Group B"],
+        "details": "4v2 rondos, 6v6 constraints"
+      }
+    },
+    {
+      "id": "physical-006",
+      "title": "Speed — Acceleration",
+      "start": "2025-10-04T09:00:00",
+      "end": "2025-10-04T09:30:00",
+      "backgroundColor": "#2d9cdb",
+      "borderColor": "#1b6fa0",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PHYSICAL_SPEED",
+        "calendarCategory": "Physical",
+        "squad": "Battalion 3",
+        "location": "Track",
+        "coach": "S&C Coach Maya",
+        "attendees": ["Youth Group B"],
+        "details": "6×20m; rest 2–3 min"
+      }
+    },
+    {
+      "id": "medical-007",
+      "title": "Illness Check — URTI",
+      "start": "2025-10-04T12:00:00",
+      "end": "2025-10-04T12:10:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_ILLNESS",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 3",
+        "location": "Medical Suite",
+        "coach": "Team Doctor",
+        "attendees": ["Youth Player 22"],
+        "details": "Symptoms check; rest guidance"
+      }
+    },
+    {
+      "id": "psych-005",
+      "title": "Workshop — Growth Mindset",
+      "start": "2025-10-04T14:00:00",
+      "end": "2025-10-04T14:45:00",
+      "backgroundColor": "#e74d3d",
+      "borderColor": "#c0392b",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PSYCHOLOGICAL_WORKSHOP",
+        "calendarCategory": "Psychological",
+        "squad": "Battalion 3",
+        "location": "Classroom",
+        "coach": "Dr. Patel",
+        "attendees": ["Battalion 3"],
+        "details": "Effort cues, reflective journaling"
+      }
+    },
+    {
+      "id": "sleep-006",
+      "title": "Sleep — Target 9h",
+      "start": "2025-10-04T22:00:00",
+      "end": "2025-10-05T07:00:00",
+      "backgroundColor": "#6c5ce7",
+      "borderColor": "#4b3cb3",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "SLEEP_TRACK",
+        "calendarCategory": "Sleep",
+        "squad": "Battalion 3",
+        "location": "Home",
+        "attendees": [],
+        "summary": {
+          "targetHours": 9
+        }
+      }
+    },
+    {
+      "id": "appt-005",
+      "title": "Parents Meeting — Youth",
+      "start": "2025-10-04T18:00:00",
+      "end": "2025-10-04T18:45:00",
+      "backgroundColor": "#95a5a6",
+      "borderColor": "#7f8c8d",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "APPOINTMENT_PARENT",
+        "calendarCategory": "Appointments",
+        "squad": "Battalion 3",
+        "location": "Club Hall",
+        "attendees": ["Parents", "Coaches"],
+        "details": "Educational briefing + schedule"
+      }
+    },
+    {
+      "id": "nut-009",
+      "title": "BF 520kcal — Granola + Milk",
+      "start": "2025-10-04T08:00:00",
+      "end": "2025-10-04T08:15:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 3",
+        "location": "Dining Hall",
+        "athleteId": 32,
+        "day": "saturday",
+        "weekIndex": 0,
+        "originalTitle": "Breakfast",
+        "nutrition": {
+          "calories": 520,
+          "protein": 22,
+          "carbs": 72,
+          "fat": 16
+        },
+        "mealPercentOfDaily": 23
+      }
+    },
+  
+    {
+      "id": "training-008",
+      "title": "11v11 Scenario — Finishing",
+      "start": "2025-10-05T10:30:00",
+      "end": "2025-10-05T11:30:00",
+      "backgroundColor": "#3a8dee",
+      "borderColor": "#0e478a",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "TRAINING_TACTICAL",
+        "calendarCategory": "Training",
+        "squad": "Battalion 1",
+        "location": "Pitch A",
+        "coach": "Head Coach Rivera",
+        "attendees": ["Squad A"],
+        "details": "Chance creation under pressure"
+      }
+    },
+    {
+      "id": "physical-007",
+      "title": "Conditioning — Aerobic Intervals",
+      "start": "2025-10-05T09:30:00",
+      "end": "2025-10-05T10:10:00",
+      "backgroundColor": "#2d9cdb",
+      "borderColor": "#1b6fa0",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PHYSICAL_CONDITIONING",
+        "calendarCategory": "Physical",
+        "squad": "Battalion 1",
+        "location": "Track",
+        "coach": "S&C Coach Li",
+        "attendees": ["Conditioning Group 2"],
+        "details": "6×3’ @ 90% MAS, 2’ easy jog"
+      }
+    },
+    {
+      "id": "medical-008",
+      "title": "Wellness Check — RPE & Soreness",
+      "start": "2025-10-05T08:45:00",
+      "end": "2025-10-05T09:00:00",
+      "backgroundColor": "#f39c11",
+      "borderColor": "#e77e23",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "MEDICAL_MONITORING",
+        "calendarCategory": "Medical",
+        "squad": "Battalion 1",
+        "location": "Medical Suite",
+        "coach": "Performance Staff",
+        "attendees": ["All available"],
+        "details": "Daily wellness + CMJ quick test"
+      }
+    },
+    {
+      "id": "psych-006",
+      "title": "Mindfulness — Guided 12m",
+      "start": "2025-10-05T12:30:00",
+      "end": "2025-10-05T12:42:00",
+      "backgroundColor": "#e74d3d",
+      "borderColor": "#c0392b",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "PSYCHOLOGICAL_MINDFUL",
+        "calendarCategory": "Psychological",
+        "squad": "Battalion 1",
+        "location": "Recovery Zone",
+        "coach": "Dr. Williams",
+        "attendees": ["Open group"],
+        "details": "Breath focus + body scan"
+      }
+    },
+    {
+      "id": "sleep-007",
+      "title": "Nap — 20 min",
+      "start": "2025-10-05T14:15:00",
+      "end": "2025-10-05T14:35:00",
+      "backgroundColor": "#6c5ce7",
+      "borderColor": "#4b3cb3",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "SLEEP_NAP",
+        "calendarCategory": "Sleep",
+        "squad": "Battalion 1",
+        "location": "Home",
+        "attendees": [],
+        "details": "Power nap to aid afternoon session"
+      }
+    },
+    {
+      "id": "appt-006",
+      "title": "Boot Fitting — New Studs",
+      "start": "2025-10-05T16:00:00",
+      "end": "2025-10-05T16:20:00",
+      "backgroundColor": "#95a5a6",
+      "borderColor": "#7f8c8d",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "APPOINTMENT_KIT",
+        "calendarCategory": "Appointments",
+        "squad": "Battalion 1",
+        "location": "Kit Room",
+        "attendees": ["Equipment Manager", "Player 5"],
+        "details": "Pitch conditions review + stud length"
+      }
+    },
+    {
+      "id": "nut-010",
+      "title": "Dinner 820kcal — Stir-Fry + Rice",
+      "start": "2025-10-05T19:00:00",
+      "end": "2025-10-05T19:25:00",
+      "backgroundColor": "#1bbc9c",
+      "borderColor": "#15a086",
+      "textColor": "#ffffff",
+      "extendedProps": {
+        "eventType": "NUTRITION",
+        "calendarCategory": "Nutrition",
+        "squad": "Battalion 1",
+        "location": "Home",
+        "athleteId": 11,
+        "day": "sunday",
+        "weekIndex": 0,
+        "originalTitle": "Dinner",
+        "nutrition": {
+          "calories": 820,
+          "protein": 48,
+          "carbs": 105,
+          "fat": 24
+        },
+        "mealPercentOfDaily": 35,
+        "note": "Add fruit for dessert",
+        "summary": {
+          "dailyCaloriesTarget": 2400,
+          "estimatedAchieved": 2350
+        }
+      }
+    }
+  ]

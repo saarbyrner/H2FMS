@@ -10,15 +10,15 @@ export { default as LayoutWithMainNav } from './LayoutWithMainNav'
 export { default as PlayerAvatar } from './PlayerAvatar'
 export { default as LogoImage } from './LogoImage'
 export { default as MainNavigation } from './MainNavigation'
-export { default as AthleteDataGrid } from './AthleteDataGrid'
+export { default as SoldierDataGrid } from './SoldierDataGrid'
 export { default as EventTooltip } from './EventTooltip'
 export { default as AddEventSidebar } from './AddEventSidebar'
 
 // Usage Examples:
 // import { Button, Icon, Card, PlayerAvatar, LogoImage } from '../components'
 // 
-// <Button variant="primary" size="small">Add athlete</Button>
+// <Button variant="primary" size="small">Add soldier</Button>
 // <Icon icon="dashboard" size="medium" />
-// <Card title="Athletes">Card content</Card>
+// <Card title="Soldiers">Card content</Card>
 // <PlayerAvatar playerId="123" playerName="John Smith" size="medium" />
 // <LogoImage type="team" logoId="arsenal" league="premier-league" height={40} />

@@ -2,7 +2,7 @@
   {
     "id": 1,
     "athlete_id": 1,
-    "athlete_name": "Marcus Johnson",
+    "soldier_name": "Marcus Johnson",
     "assessment_type": "Fitness Assessment",
     "assessment_template": "Pre-Season Fitness Battery",
     "assessment_date": "2024-01-15",
@@ -56,7 +56,7 @@
   {
     "id": 2,
     "athlete_id": 2,
-    "athlete_name": "Elena Rodriguez",
+    "soldier_name": "Elena Rodriguez",
     "assessment_type": "Medical Screening",
     "assessment_template": "Comprehensive Health Check",
     "assessment_date": "2024-01-12",
@@ -110,7 +110,7 @@
   {
     "id": 3,
     "athlete_id": 3,
-    "athlete_name": "David Chen",
+    "soldier_name": "David Chen",
     "assessment_type": "Skill Assessment",
     "assessment_template": "Technical Skills Evaluation",
     "assessment_date": "2024-01-10",
@@ -164,7 +164,7 @@
   {
     "id": 4,
     "athlete_id": 4,
-    "athlete_name": "Sarah Williams",
+    "soldier_name": "Sarah Williams",
     "assessment_type": "Goalkeeper Assessment",
     "assessment_template": "Goalkeeper Skills Battery",
     "assessment_date": "2024-01-08",
@@ -218,7 +218,7 @@
   {
     "id": 5,
     "athlete_id": 5,
-    "athlete_name": "Alex Thompson",
+    "soldier_name": "Alex Thompson",
     "assessment_type": "Psychological Assessment",
     "assessment_template": "Mental Performance Evaluation",
     "assessment_date": "2024-01-05",
@@ -272,7 +272,7 @@
   {
     "id": 6,
     "athlete_id": 6,
-    "athlete_name": "Emma Davis",
+    "soldier_name": "Emma Davis",
     "assessment_type": "Nutrition Assessment",
     "assessment_template": "Dietary Analysis",
     "assessment_date": "2024-01-03",

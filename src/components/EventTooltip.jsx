@@ -140,7 +140,7 @@ const EventTooltip = ({
         minWidth: '320px',
         maxWidth: '400px',
         padding: '16px',
-        fontFamily: 'Arial, sans-serif',
+        fontFamily: 'var(--font-family-primary)',
       }}
     >
       {/* Header with icon, title and duplicate button */}
@@ -316,13 +316,13 @@ const EventTooltip = ({
             onClick={onMoreDetails}
             variant="contained"
             sx={{ 
-              backgroundColor: '#1976d2',
+              backgroundColor: '#3B4960',
               color: '#ffffff',
               fontSize: '12px',
               textTransform: 'none',
               minWidth: 'auto',
               padding: '4px 12px',
-              '&:hover': { backgroundColor: '#1565c0' }
+              '&:hover': { backgroundColor: '#2f3a4d' }
             }}
           >
             More details

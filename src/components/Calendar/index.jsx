@@ -41,6 +41,36 @@ const Calendar = forwardRef(({
   }, [selectedCalendarView, currentCalendarView, forwardedRef]);
 
   const handleEventClickInternal = (eventObj) => {
+    // Prefer FullCalendar event object shape
+    const ev = eventObj?.event;
+    try {
+      const ext = ev?.extendedProps || {};
+      const category = ext.calendarCategory;
+      // When a Nutrition event is clicked, deep-link to Athlete Nutrition Daily Plan
+      if (category === 'Nutrition') {
+        const athleteId = ext.athleteId || ext.playerId || ext.userId;
+        // Derive ISO date (YYYY-MM-DD) from event start
+        const startISO = ev?.startStr || ev?.start?.toISOString?.() || '';
+        const dateISO = startISO ? startISO.slice(0, 10) : '';
+        if (athleteId && dateISO) {
+          // Use location navigation to avoid requiring react-router here
+          const target = `/soldiers/${athleteId}/nutrition?date=${dateISO}`;
+          try {
+            window.history.pushState({}, '', target);
+            // Dispatch a popstate event so routers listening to history changes can react
+            window.dispatchEvent(new PopStateEvent('popstate'));
+          } catch (e) {
+            // Fallback: hard navigation
+            window.location.href = target;
+          }
+          return; // Stop propagation to external handler for Nutrition events
+        }
+      }
+    } catch (e) {
+      // Non-fatal: continue to external handler
+      // console.debug('Nutrition deep-link handling failed', e);
+    }
+
     if (handleEventClick) {
       handleEventClick(eventObj);
     }

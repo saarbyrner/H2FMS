@@ -30,7 +30,7 @@ const FullCalendarComponent = ({
   setCalendarLoading,
   onDatesRender,
   initialDate,
-  allDaySlot = true,
+  allDaySlot = false,
 }) => {
   const onEventDidMount = (arg) => {
     const {
@@ -66,10 +66,7 @@ const FullCalendarComponent = ({
   };
 
   return (
-    <div
-      className="calendar"
-      style={calendarStyles.calendar}
-    >
+  <div className="calendar" style={calendarStyles.calendar}>
       <FullCalendar
         ref={forwardedRef}
         initialView={currentCalendarView || CALENDAR_VIEW_OPTIONS.dayGridMonth}

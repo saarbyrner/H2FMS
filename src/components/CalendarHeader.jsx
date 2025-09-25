@@ -1,8 +1,12 @@
 import React, { useState, useRef } from 'react';
-import { Box, Typography, IconButton, Badge, Popover } from '@mui/material';
+import { Box, Typography, IconButton, Popover, Menu, MenuItem } from '@mui/material';
 import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { LicenseInfo } from '@mui/x-license-pro';
+
+// TODO: Set MUI X License Key with correct key
+// LicenseInfo.setLicenseKey('YOUR_ACTUAL_MUI_X_LICENSE_KEY_HERE');
 import { Add, ArrowDropDown, ChevronLeft, ChevronRight, FilterList } from '@mui/icons-material';
 import Button from './Button';
 
@@ -15,12 +19,11 @@ const CalendarHeader = ({
   onNavigate,
   currentDate,
   onDateChange,
-  activeFilterCount = 0,
-  showAllDay = false,
-  onToggleAllDay,
+  // all-day toggle now handled inside calendar grid
 }) => {
-  const [selectedDate, setSelectedDate] = useState(currentDate || new Date('2025-09-01'));
+  const [selectedDate, setSelectedDate] = useState(currentDate || new Date('2025-09-29'));
   const [datePickerAnchor, setDatePickerAnchor] = useState(null);
+  const [viewAnchor, setViewAnchor] = useState(null);
 
   const handleDateClick = (event) => {
     setDatePickerAnchor(event.currentTarget);
@@ -60,33 +63,24 @@ const CalendarHeader = ({
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         {/* Show/Hide Filters Button */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Badge
-            badgeContent={activeFilterCount}
-            sx={{
-              '& .MuiBadge-badge': {
-                backgroundColor: 'var(--color-text-secondary)',
-                color: 'white',
-                fontSize: '10px',
-                minWidth: '16px',
-                height: '16px',
-                borderRadius: '8px',
-                right: '6px',
-                top: '6px',
-              },
-            }}
+          <Button
+            variant="secondary"
+            onClick={onToggleFilters}
           >
-            <Button
-              variant="secondary"
-              onClick={onToggleFilters}
-            >
-              <FilterList sx={{ fontSize: '18px', marginRight: '8px' }} />
-              Show filters
-            </Button>
-          </Badge>
+            <FilterList sx={{ fontSize: '18px', marginRight: '8px' }} />
+            Filters
+          </Button>
         </Box>
 
         {/* Navigation Controls */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Button
+            variant="secondary"
+            onClick={() => onNavigate && onNavigate('today')}
+          >
+            Today
+          </Button>
+
           <IconButton
             onClick={() => onNavigate && onNavigate('prev')}
             sx={{
@@ -112,13 +106,6 @@ const CalendarHeader = ({
           >
             <ChevronRight />
           </IconButton>
-
-          <Button
-            variant="secondary"
-            onClick={() => onNavigate && onNavigate('today')}
-          >
-            Today
-          </Button>
         </Box>
       </Box>
 
@@ -152,37 +139,39 @@ const CalendarHeader = ({
 
       {/* Right Section - View & Add */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        {/* View Switcher: Month / Week */}
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        <Box>
           <Button
-            variant={currentView === 'dayGridMonth' ? 'primary' : 'secondary'}
-            onClick={() => onViewChange && onViewChange('dayGridMonth')}
+            variant="secondary"
+            onClick={(e) => setViewAnchor(e.currentTarget)}
           >
-            Month
+            {currentView === 'dayGridMonth' ? 'Month' : 'Week'}
+            <ArrowDropDown sx={{ fontSize: '16px', marginLeft: '8px' }} />
           </Button>
-          <Button
-            variant={currentView === 'timeGridWeek' ? 'primary' : 'secondary'}
-            onClick={() => onViewChange && onViewChange('timeGridWeek')}
+          <Menu
+            anchorEl={viewAnchor}
+            open={Boolean(viewAnchor)}
+            onClose={() => setViewAnchor(null)}
           >
-            Week
-          </Button>
-          {currentView === 'timeGridWeek' && (
-            <Button
-              variant={showAllDay ? 'secondary' : 'secondary'}
-              onClick={onToggleAllDay}
+            <MenuItem
+              selected={currentView === 'dayGridMonth'}
+              onClick={() => { onViewChange && onViewChange('dayGridMonth'); setViewAnchor(null); }}
             >
-              {showAllDay ? 'Hide All-Day' : 'Show All-Day'}
-            </Button>
-          )}
+              Month
+            </MenuItem>
+            <MenuItem
+              selected={currentView === 'timeGridWeek'}
+              onClick={() => { onViewChange && onViewChange('timeGridWeek'); setViewAnchor(null); }}
+            >
+              Week
+            </MenuItem>
+          </Menu>
         </Box>
 
         <Button
           variant="primary"
           onClick={onAddEvent}
         >
-          <Add sx={{ fontSize: '16px', marginRight: '8px' }} />
           Add
-          <ArrowDropDown sx={{ fontSize: '16px', marginLeft: '8px' }} />
         </Button>
       </Box>
 
@@ -227,8 +216,8 @@ const CalendarHeader = ({
                 fontSize: '16px',
                 fontWeight: 600,
                 cursor: 'pointer',
-                color: '#333333',
-                fontFamily: 'Open Sans, sans-serif',
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-family-primary)',
                 textTransform: 'none',
                 '&:hover': {
                   color: '#3B4960',
@@ -236,8 +225,8 @@ const CalendarHeader = ({
               },
               '& .MuiPickersYear-yearButton': {
                 cursor: 'pointer',
-                color: '#333333',
-                fontFamily: 'Open Sans, sans-serif',
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-family-primary)',
                 fontSize: '14px',
                 fontWeight: 400,
                 textTransform: 'none',
@@ -255,8 +244,8 @@ const CalendarHeader = ({
               },
               '& .MuiPickersMonth-monthButton': {
                 cursor: 'pointer',
-                color: '#333333',
-                fontFamily: 'Open Sans, sans-serif',
+                color: 'var(--color-text-primary)',
+                fontFamily: 'var(--font-family-primary)',
                 fontSize: '14px',
                 fontWeight: 400,
                 textTransform: 'none',
@@ -277,7 +266,7 @@ const CalendarHeader = ({
                 borderTop: '1px solid #e0e0e0',
               },
               '& .MuiButton-root': {
-                fontFamily: 'Open Sans, sans-serif',
+                fontFamily: 'var(--font-family-primary)',
                 fontSize: '14px',
                 fontWeight: 500,
                 textTransform: 'none',

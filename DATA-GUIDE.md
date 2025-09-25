@@ -29,7 +29,7 @@
 **`squads_teams.json`** - 4 squads with formations & stats
 ```json
 {
-  "name": "First Team",
+  "name": "Battalion 1",
   "coach": "Roberto Martinez",
   "formation": "4-3-3",
   "logo": "arsenal",

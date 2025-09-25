@@ -6,7 +6,7 @@ import '../styles/design-tokens.css'
 // Mock navigation items based on real Medinah structure
 const navigationItems = [
   { name: 'Dashboard', path: '/dashboard', icon: 'dashboard', section: 'main' },
-  { name: 'Athletes', path: '/athlete', icon: 'person', section: 'main' },
+  { name: 'Soldiers', path: '/soldier', icon: 'person', section: 'main' },
   { name: 'Medical', path: '/medical', icon: 'local_hospital', section: 'main' },
   { name: 'Workloads', path: '/workloads', icon: 'fitness_center', section: 'main' },
   { name: 'Questionnaires', path: '/questionnaires', icon: 'assignment', section: 'main' },
@@ -25,10 +25,18 @@ const currentUser = {
 
 // Mock squad data
 const availableSquads = [
-  { id: 1, name: 'First Team', short: 'FT' },
-  { id: 2, name: 'Reserve Team', short: 'RES' },
-  { id: 3, name: 'Academy U21', short: 'U21' },
-  { id: 4, name: 'Academy U18', short: 'U18' }
+  { id: 1, name: 'Battalion 1', short: 'B1' },
+  { id: 2, name: 'Battalion 2', short: 'B2' },
+  { id: 3, name: 'Battalion 3', short: 'B3' },
+  { id: 4, name: 'Company 1', short: 'C1' },
+  { id: 5, name: 'Company 1.2', short: 'C1.2' },
+  { id: 6, name: 'Company 1.3', short: 'C1.3' },
+  { id: 7, name: 'Company 2.1', short: 'C2.1' },
+  { id: 8, name: 'Company 2.2', short: 'C2.2' },
+  { id: 9, name: 'Company 2.3', short: 'C2.3' },
+  { id: 10, name: 'Company 3.1', short: 'C3.1' },
+  { id: 11, name: 'Company 3.2', short: 'C3.2' },
+  { id: 12, name: 'Company 3.3', short: 'C3.3' }
 ]
 
 function MedinahLayout({ children }) {

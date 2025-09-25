@@ -42,7 +42,7 @@ assets/
 <img src="/assets/logos/medinah-logo.svg" alt="Medinah Logo" />
 
 // Team badges
-<img src="/assets/teams/first-team-badge.png" alt="First Team" />
+<img src="/assets/teams/battalion-1-badge.png" alt="Battalion 1" />
 ```
 
 ### **In CSS**

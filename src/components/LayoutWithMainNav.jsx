@@ -29,21 +29,34 @@ const currentUser = {
 
 // Mock squad data
 const availableSquads = [
-  { id: 1, name: 'First Team', short: 'FT' },
-  { id: 2, name: 'Reserve Team', short: 'RES' },
-  { id: 3, name: 'Academy U21', short: 'U21' },
-  { id: 4, name: 'Academy U18', short: 'U18' }
+  { id: 1, name: 'Battalion 1', short: 'B1' },
+  { id: 2, name: 'Battalion 2', short: 'B2' },
+  { id: 3, name: 'Battalion 3', short: 'B3' },
+  { id: 4, name: 'Company 1', short: 'C1' },
+  { id: 5, name: 'Company 1.2', short: 'C1.2' },
+  { id: 6, name: 'Company 1.3', short: 'C1.3' },
+  { id: 7, name: 'Company 2.1', short: 'C2.1' },
+  { id: 8, name: 'Company 2.2', short: 'C2.2' },
+  { id: 9, name: 'Company 2.3', short: 'C2.3' },
+  { id: 10, name: 'Company 3.1', short: 'C3.1' },
+  { id: 11, name: 'Company 3.2', short: 'C3.2' },
+  { id: 12, name: 'Company 3.3', short: 'C3.3' }
 ]
 
 // Page titles mapping
 const pageTitles = {
+  '/': 'Home',
   '/dashboard': 'Dashboard',
   '/medical': 'Medical',
   '/analysis': 'Analysis',
-  '/athlete': 'Athletes',
-  '/workloads': 'Workload',
+  '/soldier': 'Soldiers',
+  '/physical': 'Physical',
+  '/psychological': 'Psychological',
   '/questionnaires': 'Forms',
   '/planning': 'Calendar',
+  '/nutrition': 'Nutrition',
+  '/nutrition/create': 'Plan Builder',
+  '/nutrition/templates': 'Templates',
   '/activity': 'Activity log',
   '/settings': 'Admin',
   '/help': 'Help'
@@ -105,17 +118,23 @@ function MedinahLayoutWithMainNav({ children }) {
             bgcolor: '#ffffff',
             color: '#333333',
             borderBottom: '1px solid #e0e0e0',
-            boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+            boxShadow: 'none',
+            minHeight: '50px'
           }}
         >
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <Toolbar sx={{ 
+            justifyContent: 'space-between',
+            minHeight: '50px !important',
+            alignItems: 'center'
+          }}>
             {/* Page Title */}
             <Typography 
               variant="h6" 
               component="h1"
               sx={{ 
                 fontWeight: 600,
-                color: 'var(--color-text-primary)',
+                fontSize: '16px',
+                color: '#666666',
                 textTransform: 'none'
               }}
             >

@@ -2,7 +2,7 @@
 // Edit this file to change what appears in tables and cards
 
 // Import comprehensive data from JSON files
-import athletesData from './data/athletes.json'
+import soldiersData from './data/soldiers.json'
 import injuriesData from './data/injuries_medical.json'
 import trainingsData from './data/training_sessions.json'
 import assessmentsData from './data/assessments.json'
@@ -12,7 +12,7 @@ import questionnairesData from './data/questionnaires_wellbeing.json'
 import staffData from './data/users_staff.json'
 
 // Export all data for easy access
-export const athletes = athletesData
+export const soldiers = soldiersData
 export const injuries = injuriesData
 export const training = trainingsData
 export const assessments = assessmentsData
@@ -22,18 +22,18 @@ export const questionnaires = questionnairesData
 export const staff = staffData
 
 // Simple data extracts for backward compatibility and easy access
-export const athletesSimple = athletes.map(athlete => ({
-  id: athlete.id,
-  name: `${athlete.firstname} ${athlete.lastname}`,
-  position: athlete.position,
-  age: athlete.age,
-  status: athlete.availability_status,
-  team: athlete.squad_name,
-  nationality: athlete.country,
-  height: athlete.height,
-  weight: athlete.weight,
-  performance: athlete.performance_score,
-  value: athlete.market_value
+export const soldiersSimple = soldiers.map(soldier => ({
+  id: soldier.id,
+  name: `${soldier.firstname} ${soldier.lastname}`,
+  position: soldier.position,
+  age: soldier.age,
+  status: soldier.availability_status,
+  team: soldier.squad_name,
+  nationality: soldier.country,
+  height: soldier.height,
+  weight: soldier.weight,
+  performance: soldier.performance_score,
+  value: soldier.market_value
 }))
 
 export const trainingSimple = training.map(session => ({
@@ -49,7 +49,7 @@ export const trainingSimple = training.map(session => ({
 
 export const assessmentsSimple = assessments.map(assessment => ({
   id: assessment.id,
-  athlete: assessment.athlete_name,
+  soldier: assessment.soldier_name,
   type: assessment.assessment_type,
   date: assessment.assessment_date,
   score: assessment.overall_score,

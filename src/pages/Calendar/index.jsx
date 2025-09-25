@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 import FiltersSidebar from '../../components/FiltersSidebar';
 import CalendarHeader from '../../components/CalendarHeader';
@@ -7,150 +8,216 @@ import EventTooltip from '../../components/EventTooltip';
 import AddEventSidebar from '../../components/AddEventSidebar';
 import calendarEventsData from '../../data/calendar_events.json';
 import calendarCategoryEvents from '../../data/calendar_category_events.json';
-import athletesData from '../../data/athletes.json';
+import newCalendarData from '../../data/calendar.json';
+import soldiersData from '../../data/soldiers.json';
 import staffData from '../../data/users_staff.json';
 import nutritionData from '../../data/nutrition.json';
 import { nutritionWeekToEvents } from '../../utils/nutritionToEvents';
+// Nutrition prototype dynamic events
+import { getPublishedNutritionEvents } from '../../features/nutrition/api';
 
 const CalendarPage = () => {
-  // Eventos base (todos) y eventos filtrados
+  // Simplified state management - single source of truth
   const [allEvents, setAllEvents] = useState([]);
-  const [events, setEvents] = useState([]);
   const [currentView, setCurrentView] = useState('dayGridMonth');
   const [showFilters, setShowFilters] = useState(false);
   const [showAddEventSidebar, setShowAddEventSidebar] = useState(false);
   const [tooltip, setTooltip] = useState({ show: false, event: null, position: { x: 0, y: 0 }, anchorRect: null });
-  const [currentDate, setCurrentDate] = useState(new Date('2025-09-01'));
-  const [showAllDay, setShowAllDay] = useState(false); // collapsed by default
+  const [currentDate, setCurrentDate] = useState(new Date('2025-09-29'));
   const calendarRef = useRef(null);
 
-  // Conteo de filtros activos para el header
-  const [activeFilters, setActiveFilters] = useState({
-    squads: 0,
-    types: 0,
-    attendees: 0,
-    location: 0,
-    games: 0,
-  });
-
-  // Estado de filtros seleccionados
+  // Consolidated filter state
   const [filters, setFilters] = useState({
     squads: [],
     types: [],
     locations: [],
+    attendees: [],
   });
 
-  // Multi-select calendar categories (empty => show base events only)
-  const calendarCategories = ['Nutrition','Sleep','Physical','Spiritual','Mental','Medical'];
-  const [selectedCategories, setSelectedCategories] = useState([]); // [] means base events only
+  // Calendar categories are now handled through unified types in the filters
 
+  // Load and combine all events (base + nutrition + categories)
   useEffect(() => {
-    // Base events without urls
-    const baseEvents = calendarEventsData.map(event => {
-      const { url, ...rest } = event;
-      return rest;
-    });
+    const loadEvents = () => {
+      try {
+        // Base events without urls
+        const baseEvents = calendarEventsData.map(event => {
+          const { url, ...rest } = event;
+          return rest;
+        });
 
-    // Nutrition events for Sarah Brown (athlete id 9) using provided nutrition.json
-    let nutritionEvents = [];
-    try {
-      nutritionEvents = nutritionWeekToEvents(nutritionData, { athleteId: 9, baseMonday: '2025-09-01', weeks: 4 });
-    } catch (e) {
-      console.warn('Failed to transform nutrition data', e);
-    }
+        // Nutrition events
+        let nutritionEvents = [];
+        try {
+          nutritionEvents = nutritionWeekToEvents(nutritionData, { 
+            athleteId: 9, 
+            baseMonday: '2025-09-29', 
+            weeks: 1 
+          });
+        } catch (e) {
+          console.warn('Failed to transform nutrition data', e);
+        }
 
-    // Category events already don't have url values; ensure shape consistency and attach category label via extendedProps.calendarCategory
-    const catEvents = calendarCategoryEvents.map(ev => ({
-      ...ev,
-      extendedProps: {
-        ...(ev.extendedProps || {}),
-        calendarCategory: ev.extendedProps?.calendarCategory || 'Uncategorized'
+        // Add published nutrition events
+        const published = getPublishedNutritionEvents();
+        nutritionEvents = [...nutritionEvents, ...published];
+
+        // Category events
+        const catEvents = calendarCategoryEvents.map(ev => ({
+          ...ev,
+          extendedProps: {
+            ...(ev.extendedProps || {}),
+            calendarCategory: ev.extendedProps?.calendarCategory || 'Uncategorized'
+          }
+        }));
+
+        // New calendar data (your comprehensive dataset)
+        const newEvents = newCalendarData.map(event => ({
+          ...event,
+          extendedProps: {
+            ...(event.extendedProps || {}),
+            calendarCategory: event.extendedProps?.calendarCategory || 'Uncategorized'
+          }
+        }));
+
+        // Combine all events - categories are now handled through unified types filtering
+        const combined = [...baseEvents, ...nutritionEvents, ...catEvents, ...newEvents];
+
+        setAllEvents(combined);
+      } catch (error) {
+        console.error('Error loading events:', error);
+        setAllEvents([]);
       }
-    }));
+    };
 
-    // Always include nutrition events when Nutrition category selected; if no categories selected we can still include base + nutrition for athlete context
-    let combined;
-    const selectedSet = new Set(selectedCategories);
-    if (!selectedCategories.length) {
-      // Show all base + nutrition by default so user can immediately see athlete plan
-      combined = [...baseEvents, ...nutritionEvents];
-    } else {
-      const selectedCatEvents = catEvents.filter(ev => selectedSet.has(ev.extendedProps?.calendarCategory));
-      const includeNutrition = selectedSet.has('Nutrition') ? nutritionEvents : [];
-      combined = [...baseEvents, ...selectedCatEvents, ...includeNutrition];
-    }
-    setAllEvents(combined);
-    setEvents(combined);
+    loadEvents();
+  }, []);
 
-    // Reset filters based on combined dataset
-    const squads = Array.from(new Set(combined.map(ev => ev?.extendedProps?.squad).filter(Boolean))).sort();
-    const types = Array.from(new Set(combined.map(ev => ev?.extendedProps?.eventType).filter(Boolean))).sort();
-    const locations = Array.from(new Set(combined.map(ev => ev?.extendedProps?.location).filter(Boolean))).sort();
-    setFilters({ squads, types, locations });
-    setActiveFilters(prev => ({
-      ...prev,
-      squads: squads.length,
-      types: types.length,
-      location: locations.length,
-    }));
-  }, [selectedCategories]);
-
-  // Opciones disponibles derivadas de todos los eventos
+  // Memoized available filter options
   const availableOptions = useMemo(() => {
     const squads = new Set();
     const types = new Set();
     const locations = new Set();
+    const attendees = new Set();
+
     allEvents.forEach(ev => {
       const squad = ev?.extendedProps?.squad;
       if (squad) squads.add(squad);
+      
       const type = ev?.extendedProps?.eventType;
       if (type) types.add(type);
+      
       const location = ev?.extendedProps?.location;
       if (location) locations.add(location);
+      
+      const eventAttendees = ev?.extendedProps?.attendees || [];
+      eventAttendees.forEach(attendee => attendees.add(attendee));
     });
+
     return {
       squads: Array.from(squads).sort(),
       types: Array.from(types).sort(),
       locations: Array.from(locations).sort(),
+      attendees: Array.from(attendees).sort(),
     };
   }, [allEvents]);
 
-  // Inicializar filtros cuando haya opciones
+  // Create unified types list (same logic as in FiltersSidebar)
+  const unifiedTypes = useMemo(() => {
+    const typeMap = {
+      'Physical': ['PHYSICAL_STRENGTH', 'PHYSICAL_SPEED', 'PHYSICAL_CONDITIONING', 'PHYSICAL_PREHAB', 'PHYSICAL_PRIMER'],
+      'Medical': ['MEDICAL_SCREENING', 'MEDICAL_REHAB', 'MEDICAL_TREATMENT', 'MEDICAL_CONSULT', 'MEDICAL_SUPPORT', 'MEDICAL_RTP', 'MEDICAL_ILLNESS', 'MEDICAL_RECOVERY', 'MEDICAL_MONITORING'],
+      'Nutrition': ['NUTRITION', 'NUTRITION_SESSION', 'NUTRITION_BRIEFING'],
+      'Psychological': ['MENTAL_SKILLS', 'MENTAL_TEAM', 'SPIRITUAL_MINDFULNESS', 'SPIRITUAL_TEAM_CULTURE', 'PSYCHOLOGICAL_SESSION', 'PSYCHOLOGICAL_GROUP', 'PSYCHOLOGICAL_DEBRIEF', 'PSYCHOLOGICAL_WORKSHOP', 'PSYCHOLOGICAL_MINDFUL'],
+      'Sleep': ['SLEEP_EDUCATION', 'SLEEP_SESSION', 'SLEEP_TRACK', 'SLEEP_NAP'],
+      'Appointments': ['TEST_SESSION', 'RECURRING_EVENT', 'SERIES_EVENT', 'APPOINTMENT_ADMIN', 'APPOINTMENT_MEDIA', 'APPOINTMENT_HEALTH', 'APPOINTMENT_COMMUNITY', 'APPOINTMENT_PARENT', 'APPOINTMENT_KIT'],
+      'Training': ['TRAINING_SESSION', 'TRAINING_TACTICAL', 'TRAINING_TECHNICAL', 'TRAINING_SETPIECES', 'TRAINING_ACTIVATION', 'TRAINING_MATCH', 'TRAINING_RECOVERY']
+    };
+
+    // Get all available event types from the data
+    const availableEventTypes = new Set(availableOptions.types);
+    
+    // Create the unified list, only including types that exist in the data
+    const unified = [];
+    Object.entries(typeMap).forEach(([displayName, eventTypes]) => {
+      const matchingTypes = eventTypes.filter(type => availableEventTypes.has(type));
+      if (matchingTypes.length > 0) {
+        unified.push(displayName);
+      }
+    });
+
+    // Add any remaining event types that don't fit into categories
+    const categorizedTypes = new Set(Object.values(typeMap).flat());
+    const remainingTypes = availableOptions.types.filter(type => !categorizedTypes.has(type));
+    unified.push(...remainingTypes);
+
+    return unified;
+  }, [availableOptions.types]);
+
+  // Initialize filters with all available options
   useEffect(() => {
-    if (availableOptions.squads.length && filters.squads.length === 0) {
+    if (availableOptions.squads.length > 0 && filters.squads.length === 0) {
       setFilters({
         squads: availableOptions.squads,
-        types: availableOptions.types,
+        types: unifiedTypes, // Use unified types instead of raw event types
         locations: availableOptions.locations,
+        attendees: availableOptions.attendees,
       });
-      setActiveFilters(prev => ({
-        ...prev,
-        squads: availableOptions.squads.length,
-        types: availableOptions.types.length,
-        location: availableOptions.locations.length,
-      }));
     }
-  }, [availableOptions, filters.squads.length]);
+  }, [availableOptions, unifiedTypes, filters.squads.length]);
 
-  // Aplicar filtrado
-  useEffect(() => {
-    if (!allEvents.length) return;
+  // Memoized filtered events
+  const filteredEvents = useMemo(() => {
+    if (!allEvents.length) return [];
+
     console.debug('[Calendar] Filtering events. Total before filter:', allEvents.length, 'Filters:', filters);
+    
+    // Create mapping from display names to actual event types
+    const typeMap = {
+      'Physical': ['PHYSICAL_STRENGTH', 'PHYSICAL_SPEED', 'PHYSICAL_CONDITIONING', 'PHYSICAL_PREHAB', 'PHYSICAL_PRIMER'],
+      'Medical': ['MEDICAL_SCREENING', 'MEDICAL_REHAB', 'MEDICAL_TREATMENT', 'MEDICAL_CONSULT', 'MEDICAL_SUPPORT', 'MEDICAL_RTP', 'MEDICAL_ILLNESS', 'MEDICAL_RECOVERY', 'MEDICAL_MONITORING'],
+      'Nutrition': ['NUTRITION', 'NUTRITION_SESSION', 'NUTRITION_BRIEFING'],
+      'Psychological': ['MENTAL_SKILLS', 'MENTAL_TEAM', 'SPIRITUAL_MINDFULNESS', 'SPIRITUAL_TEAM_CULTURE', 'PSYCHOLOGICAL_SESSION', 'PSYCHOLOGICAL_GROUP', 'PSYCHOLOGICAL_DEBRIEF', 'PSYCHOLOGICAL_WORKSHOP', 'PSYCHOLOGICAL_MINDFUL'],
+      'Sleep': ['SLEEP_EDUCATION', 'SLEEP_SESSION', 'SLEEP_TRACK', 'SLEEP_NAP'],
+      'Appointments': ['TEST_SESSION', 'RECURRING_EVENT', 'SERIES_EVENT', 'APPOINTMENT_ADMIN', 'APPOINTMENT_MEDIA', 'APPOINTMENT_HEALTH', 'APPOINTMENT_COMMUNITY', 'APPOINTMENT_PARENT', 'APPOINTMENT_KIT'],
+      'Training': ['TRAINING_SESSION', 'TRAINING_TACTICAL', 'TRAINING_TECHNICAL', 'TRAINING_SETPIECES', 'TRAINING_ACTIVATION', 'TRAINING_MATCH', 'TRAINING_RECOVERY']
+    };
+
+    // Convert selected display types to actual event types
+    const selectedEventTypes = new Set();
+    filters.types.forEach(displayType => {
+      if (typeMap[displayType]) {
+        typeMap[displayType].forEach(eventType => selectedEventTypes.add(eventType));
+      } else {
+        // Handle any remaining types that don't fit into categories
+        selectedEventTypes.add(displayType);
+      }
+    });
+    
     const filtered = allEvents.filter(ev => {
       const squad = ev?.extendedProps?.squad;
       const type = ev?.extendedProps?.eventType;
       const location = ev?.extendedProps?.location;
+      const attendees = ev?.extendedProps?.attendees || [];
+      
       const squadOk = !filters.squads.length || !squad || filters.squads.includes(squad);
-      const typeOk = !filters.types.length || !type || filters.types.includes(type);
-      // Permit events without location; only restrict if location exists and filters list is non-empty
+      const typeOk = !filters.types.length || !type || selectedEventTypes.has(type);
       const locationOk = !filters.locations.length || !location || filters.locations.includes(location);
-      return squadOk && typeOk && locationOk;
+      const attendeesOk = !filters.attendees.length || !attendees.length || 
+        filters.attendees.some(selectedAttendee => attendees.includes(selectedAttendee));
+      
+      return squadOk && typeOk && locationOk && attendeesOk;
     });
+    
     console.debug('[Calendar] After filtering:', filtered.length);
-    setEvents(filtered);
+    return filtered;
   }, [allEvents, filters]);
 
-  const handleEventClick = (eventObj) => {
+
+  const navigate = useNavigate();
+
+  // Event handlers with useCallback for performance
+  const handleEventClick = useCallback((eventObj) => {
     console.log('Event clicked:', eventObj);
 
     const event = eventObj.event;
@@ -170,6 +237,13 @@ const CalendarPage = () => {
 
     console.log('Event data:', event);
     console.log('Event URL:', event.url);
+
+    // If Nutrition category event -> navigate directly to athlete daily plan (bypass tooltip)
+    if (event?.extendedProps?.calendarCategory === 'Nutrition' && event?.extendedProps?.athleteId) {
+      const dateStr = event.startStr?.split('T')[0];
+      navigate(`/soldiers/${event.extendedProps.soldierId}/nutrition?date=${dateStr}`);
+      return false;
+    }
 
     // Prefer the calendar event element for positioning (more reliable than target which might be inner span)
     const eventEl = eventObj.el || jsEvent?.currentTarget || jsEvent?.target;
@@ -209,50 +283,55 @@ const CalendarPage = () => {
 
     // Return false to prevent default behavior
     return false;
-  };
+  }, [navigate]);
 
-  const handleViewChange = (viewInfo) => {
+  const handleViewChange = useCallback((viewInfo) => {
     console.log('View changed:', viewInfo);
     setCurrentView(viewInfo.view.type);
-  };
+  }, []);
 
-  const handleAddEvent = () => {
+  const handleAddEvent = useCallback(() => {
     console.log('Add event clicked - opening sidebar');
     setShowAddEventSidebar(true);
-  };
+  }, []);
 
-  const handleSaveEvent = (newEvent) => {
+  // FIXED: Add events to allEvents (source of truth) instead of just events
+  const handleSaveEvent = useCallback((newEvent) => {
     console.log('Saving new event:', newEvent);
-    setEvents(prevEvents => [...prevEvents, newEvent]);
+    
+    // Add to allEvents (source of truth) - this ensures events persist through filter changes
+    setAllEvents(prevAllEvents => [...prevAllEvents, newEvent]);
+    
+    // Close sidebar
     setShowAddEventSidebar(false);
-  };
+  }, []);
 
-  const handleCloseAddEventSidebar = () => {
+  const handleCloseAddEventSidebar = useCallback(() => {
     setShowAddEventSidebar(false);
-  };
+  }, []);
 
-  const handleEditEvent = (eventData) => {
+  const handleEditEvent = useCallback((eventData) => {
     console.log('Edit event:', eventData);
-    // TODO: Open edit modal or navigate to edit page
+    // TODO: Implement edit functionality
     alert(`Edit event: ${eventData.title}`);
-  };
+  }, []);
 
-  const handleDeleteEvent = (eventData) => {
+  // FIXED: Delete from allEvents (source of truth) instead of just events
+  const handleDeleteEvent = useCallback((eventData) => {
     console.log('Delete event:', eventData);
-    // TODO: Show confirmation dialog and delete event
     if (window.confirm(`Are you sure you want to delete "${eventData.title}"?`)) {
-      // Remove event from state
-      setEvents(prevEvents => prevEvents.filter(e => e.id !== eventData.id));
+      // Remove from allEvents (source of truth)
+      setAllEvents(prevAllEvents => prevAllEvents.filter(e => e.id !== eventData.id));
     }
-  };
+  }, []);
 
-  const handleMoreDetails = (eventData) => {
+  const handleMoreDetails = useCallback((eventData) => {
     console.log('More details for event:', eventData);
-    // TODO: Open details modal or navigate to details page
+    // TODO: Implement more details functionality
     alert(`More details for: ${eventData.title}\nSquad: ${eventData.extendedProps?.squad}\nLocation: ${eventData.extendedProps?.location}`);
-  };
+  }, []);
 
-  const handleDuplicateEvent = (eventData) => {
+  const handleDuplicateEvent = useCallback((eventData) => {
     console.log('Duplicate event:', eventData);
 
     const addDays = (dateLike, days) => {
@@ -269,23 +348,26 @@ const CalendarPage = () => {
         start: eventData?.start ? addDays(eventData.start, 7) : (eventData?.startStr ? addDays(eventData.startStr, 7) : null),
         end: eventData?.end ? addDays(eventData.end, 7) : (eventData?.endStr ? addDays(eventData.endStr, 7) : null),
         allDay: eventData?.allDay ?? false,
+        backgroundColor: eventData?.backgroundColor || '#666666',
+        borderColor: eventData?.borderColor || '#666666',
+        textColor: eventData?.textColor || '#ffffff',
         extendedProps: { ...(eventData?.extendedProps || {}) },
       };
 
-      setEvents((prev) => [...prev, newEvent]);
-      // Keep tooltip UX tidy
+      // Add to allEvents (source of truth)
+      setAllEvents(prevAllEvents => [...prevAllEvents, newEvent]);
       handleCloseTooltip();
     } catch (e) {
       console.warn('Failed to duplicate event', e);
       handleCloseTooltip();
     }
-  };
+  }, []);
 
-  const handleToggleFilters = () => {
+  const handleToggleFilters = useCallback(() => {
     setShowFilters(!showFilters);
-  };
+  }, [showFilters]);
 
-  const handleNavigate = (direction) => {
+  const handleNavigate = useCallback((direction) => {
     if (calendarRef.current) {
       const calendarApi = calendarRef.current.getApi();
       if (direction === 'prev') {
@@ -295,12 +377,11 @@ const CalendarPage = () => {
       } else if (direction === 'today') {
         calendarApi.today();
       }
-      // Update current date state when navigating
       setCurrentDate(calendarApi.getDate());
     }
-  };
+  }, []);
 
-  const handleDateChange = (newDate) => {
+  const handleDateChange = useCallback((newDate) => {
     console.log('Date changed in Calendar page:', newDate);
     setCurrentDate(newDate);
     if (calendarRef.current) {
@@ -308,27 +389,15 @@ const CalendarPage = () => {
       console.log('Navigating calendar to:', newDate);
       calendarApi.gotoDate(newDate);
     }
-  };
+  }, []);
 
-  const handleCloseTooltip = () => {
+  const handleCloseTooltip = useCallback(() => {
     setTooltip({ show: false, event: null, position: { x: 0, y: 0 }, anchorRect: null });
-  };
+  }, []);
 
-  // Calculate total active filter count
-  const getTotalActiveFilterCount = () => {
-    return Object.values(activeFilters).reduce((total, count) => total + count, 0);
-  };
-
-  // Recibir filtros actualizados desde sidebar
-  const handleFiltersChange = (updated) => {
+  const handleFiltersChange = useCallback((updated) => {
     setFilters(updated);
-    setActiveFilters(prev => ({
-      ...prev,
-      squads: updated.squads.length,
-      types: updated.types.length,
-      location: updated.locations.length,
-    }));
-  };
+  }, []);
 
   // Handle click outside to close tooltip
   useEffect(() => {
@@ -342,7 +411,7 @@ const CalendarPage = () => {
       document.addEventListener('click', handleClickOutside);
       return () => document.removeEventListener('click', handleClickOutside);
     }
-  }, [tooltip.show]);
+  }, [tooltip.show, handleCloseTooltip]);
 
   useEffect(() => {
     const onKeyDown = (e) => {
@@ -355,7 +424,7 @@ const CalendarPage = () => {
       window.addEventListener('keydown', onKeyDown);
       return () => window.removeEventListener('keydown', onKeyDown);
     }
-  }, [tooltip.show]);
+  }, [tooltip.show, handleCloseTooltip]);
 
   return (
     <Box
@@ -375,18 +444,12 @@ const CalendarPage = () => {
             const viewType = typeof view === 'string' ? view : view?.view?.type;
             if (viewType) setCurrentView(viewType);
         }}
-        showAllDay={showAllDay}
-        onToggleAllDay={() => setShowAllDay((v) => !v)}
         onAddEvent={handleAddEvent}
         onToggleFilters={handleToggleFilters}
         showFilters={showFilters}
         onNavigate={handleNavigate}
         currentDate={currentDate}
         onDateChange={handleDateChange}
-        activeFilterCount={getTotalActiveFilterCount()}
-        selectedCategories={selectedCategories}
-        onCategoriesChange={setSelectedCategories}
-        calendarCategories={calendarCategories}
       />
 
       {/* Main Content Area */}
@@ -403,10 +466,8 @@ const CalendarPage = () => {
             <FiltersSidebar
               onClose={() => setShowFilters(false)}
               selectedFilters={filters}
-              availableOptions={availableOptions}
+              availableOptions={{...availableOptions, types: unifiedTypes}}
               onFiltersChange={handleFiltersChange}
-              selectedCategories={selectedCategories}
-              onCategoriesChange={setSelectedCategories}
             />
           </Box>
         )}
@@ -433,12 +494,12 @@ const CalendarPage = () => {
               selectedCalendarView={currentView}
               orgTimeZone="UTC"
               userLocale="en"
-              events={events}
+              events={filteredEvents}
               initialDate={currentDate.toISOString().split('T')[0]}
               onEditEvent={handleEditEvent}
               onDeleteEvent={handleDeleteEvent}
               onMoreDetails={handleMoreDetails}
-              allDaySlot={showAllDay}
+              allDaySlot={false}
             />
           </Box>
         </Box>
@@ -459,12 +520,11 @@ const CalendarPage = () => {
       )}
 
       {/* Add Event Sidebar */}
-      {console.log('Sidebar state:', showAddEventSidebar)}
       <AddEventSidebar
         open={showAddEventSidebar}
         onClose={handleCloseAddEventSidebar}
         onSave={handleSaveEvent}
-        athletes={athletesData}
+        soldiers={soldiersData}
         staff={staffData}
       />
     </Box>

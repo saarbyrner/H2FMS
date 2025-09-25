@@ -10,8 +10,8 @@ const TopNavigation = () => {
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: '16px 24px',
-        backgroundColor: '#ffffff',
-        borderBottom: '1px solid #e0e0e0',
+        backgroundColor: 'var(--color-background-primary)',
+        borderBottom: '1px solid var(--color-border-primary)',
         minHeight: '64px',
       }}
     >
@@ -106,11 +106,11 @@ const TopNavigation = () => {
 
       {/* Right Section - Club/Squad Selectors and User */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        {/* First Team Dropdown */}
+        {/* Battalion 1 Dropdown */}
         <Select
           value="first-team"
           sx={{
-            color: '#333333',
+            color: 'var(--color-text-primary)',
             '& .MuiOutlinedInput-notchedOutline': {
               borderColor: '#e0e0e0',
             },
@@ -121,18 +121,18 @@ const TopNavigation = () => {
               borderColor: '#0F28FF',
             },
             '& .MuiSvgIcon-root': {
-              color: '#333333',
+              color: 'var(--color-text-primary)',
             },
           }}
         >
-          <MenuItem value="first-team">First Team</MenuItem>
+          <MenuItem value="battalion-1">Battalion 1</MenuItem>
         </Select>
 
         {/* Notifications */}
         <IconButton
           sx={{
             position: 'relative',
-            color: '#333333',
+            color: 'var(--color-text-primary)',
             '&:hover': {
               backgroundColor: 'rgba(15, 40, 255, 0.1)',
             },
@@ -163,7 +163,7 @@ const TopNavigation = () => {
         {/* DSM */}
         <Typography
           sx={{
-            color: '#333333',
+            color: 'var(--color-text-primary)',
             fontWeight: 600,
             fontSize: '14px',
           }}
@@ -191,8 +191,8 @@ const TopNavigation = () => {
         {/* International Squad Dropdown */}
         <Button
           sx={{
-            backgroundColor: '#ffffff',
-            color: '#333333',
+            backgroundColor: 'var(--color-background-primary)',
+            color: 'var(--color-text-primary)',
             border: '1px solid #e0e0e0',
             padding: '8px 16px',
             borderRadius: '4px',

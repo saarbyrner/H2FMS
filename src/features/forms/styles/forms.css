@@ -1,0 +1,152 @@
+/* Forms Feature Styles */
+
+.forms-dashboard {
+  background-color: var(--color-background-primary);
+  min-height: 100vh;
+}
+
+.questionnaire-card {
+  transition: all 0.2s ease-in-out;
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+}
+
+.questionnaire-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.form-builder-question {
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.form-builder-question:hover {
+  border-color: var(--color-primary);
+}
+
+.response-table {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.response-table .MuiTableHead-root {
+  background-color: var(--color-background-secondary);
+}
+
+.response-table .MuiTableRow-root:hover {
+  background-color: var(--color-background-hover);
+}
+
+.status-chip {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.score-chip {
+  font-weight: 600;
+  min-width: 40px;
+}
+
+.forms-filter-chip {
+  transition: all 0.2s ease;
+}
+
+.forms-filter-chip:hover {
+  transform: translateY(-1px);
+}
+
+.question-type-selector {
+  border-radius: var(--radius-md);
+}
+
+.form-settings-panel {
+  background-color: var(--color-background-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+}
+
+.questions-builder-panel {
+  background-color: var(--color-background-primary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--color-text-secondary);
+}
+
+.empty-state-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.summary-card {
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+}
+
+.summary-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .questionnaire-card {
+    margin-bottom: 16px;
+  }
+  
+  .form-builder-question {
+    margin-bottom: 12px;
+  }
+  
+  .summary-card {
+    margin-bottom: 16px;
+  }
+}
+
+/* Animation for form elements */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-element-enter {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Custom scrollbar for forms */
+.forms-scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border-primary) transparent;
+}
+
+.forms-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.forms-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.forms-scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-primary);
+  border-radius: 3px;
+}
+
+.forms-scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-secondary);
+}

@@ -32,8 +32,12 @@ import {
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+// import { LicenseInfo } from '@mui/x-license-pro';
 
-const AddEventSidebar = ({ open, onClose, onSave, athletes = [], staff = [] }) => {
+// TODO: Set MUI X License Key with correct key
+// LicenseInfo.setLicenseKey('YOUR_ACTUAL_MUI_X_LICENSE_KEY_HERE');
+
+const AddEventSidebar = ({ open, onClose, onSave, soldiers = [], staff = [] }) => {
   const [formData, setFormData] = useState({
     eventType: '',
     title: '',
@@ -43,7 +47,7 @@ const AddEventSidebar = ({ open, onClose, onSave, athletes = [], staff = [] }) =
     timezone: 'Europe/Dublin',
     repeats: 'none',
     location: '',
-    selectedAthletes: [],
+    selectedSoldiers: [],
     selectedStaff: [],
     staffVisibility: 'all',
     attachments: [],
@@ -226,13 +230,13 @@ const AddEventSidebar = ({ open, onClose, onSave, athletes = [], staff = [] }) =
           duration: formData.duration,
           timezone: formData.timezone,
           repeats: formData.repeats,
-          selectedAthletes: formData.selectedAthletes,
+          selectedSoldiers: formData.selectedSoldiers,
           selectedStaff: formData.selectedStaff,
           staffVisibility: formData.staffVisibility,
           attachments: formData.attachments,
-          squad: formData.selectedAthletes.length > 0 ? 
-            formData.selectedAthletes[0].squad_name || 'International Squad' : 
-            'International Squad',
+          squad: formData.selectedSoldiers.length > 0 ? 
+            formData.selectedSoldiers[0].squad_name || 'Battalion 1' : 
+            'Battalion 1',
           coach: formData.selectedStaff.length > 0 ? 
             `${formData.selectedStaff[0].firstname} ${formData.selectedStaff[0].lastname}` : 
             'TBD',
@@ -252,7 +256,7 @@ const AddEventSidebar = ({ open, onClose, onSave, athletes = [], staff = [] }) =
         timezone: 'Europe/Dublin',
         repeats: 'none',
         location: '',
-        selectedAthletes: [],
+        selectedSoldiers: [],
         selectedStaff: [],
         staffVisibility: 'all',
         attachments: [],
@@ -464,14 +468,14 @@ const AddEventSidebar = ({ open, onClose, onSave, athletes = [], staff = [] }) =
                 />
               </Grid>
 
-              {/* Athletes */}
+              {/* Soldiers */}
               <Grid item xs={12}>
                 <Autocomplete
                   multiple
-                  options={athletes}
+                  options={soldiers}
                   getOptionLabel={(option) => `${option.firstname} ${option.lastname}`}
-                  value={formData.selectedAthletes}
-                  onChange={(event, newValue) => handleInputChange('selectedAthletes', newValue)}
+                  value={formData.selectedSoldiers}
+                  onChange={(event, newValue) => handleInputChange('selectedSoldiers', newValue)}
                   renderTags={(value, getTagProps) =>
                     value.map((option, index) => (
                       <Chip
@@ -493,8 +497,8 @@ const AddEventSidebar = ({ open, onClose, onSave, athletes = [], staff = [] }) =
                     <TextField
                       {...params}
                       variant="filled"
-                      label="Athletes"
-                      placeholder="Select athletes..."
+                      label="Soldiers"
+                      placeholder="Select soldiers..."
                       sx={formFieldStyles}
                     />
                   )}
@@ -530,7 +534,7 @@ const AddEventSidebar = ({ open, onClose, onSave, athletes = [], staff = [] }) =
                     <TextField
                       {...params}
                       variant="filled"
-                      label="Staff"
+                      label="Company 1"
                       placeholder="Select staff..."
                       sx={formFieldStyles}
                     />
