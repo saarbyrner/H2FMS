@@ -6,11 +6,10 @@ import {
   Typography,
   Card,
   CardContent,
-  Chip,
-  Stack,
   IconButton,
   Menu,
-  MenuItem
+  MenuItem,
+  Chip
 } from '@mui/material'
 import {
   MoreVertOutlined,
@@ -18,9 +17,7 @@ import {
   TrendingUpOutlined
 } from '@mui/icons-material'
 import {
-  BarChart,
   Bar,
-  LineChart,
   Line,
   XAxis,
   YAxis,
@@ -57,28 +54,28 @@ const annualAverages = {
 
 // Key metrics data
 const keyMetrics = [
-  { label: 'Entries', value: '100%', change: '-18%', period: 'Last 10 years', trend: 'down' },
-  { label: 'Risk Rate', value: '4%', change: '-2%', period: '3yr average', trend: 'down' },
-  { label: 'Recycle Rate', value: '2.5%', change: '-2%', period: '3yr average', trend: 'down' },
-  { label: 'Vulnerable Rate', value: '10%', change: '-2%', period: '3yr average', trend: 'down' },
-  { label: 'Attrition', value: '5.1%', change: '-2%', period: '3yr average', trend: 'down' },
-  { label: 'Graduates', value: '93%', change: '-2%', period: '3yr average', trend: 'down' }
+  { label: 'entries', value: '100%', change: '18%', period: 'Last 10 years', trend: 'down', chipColor: 'var(--color-error)' },
+  { label: 'Risk rate', value: '4%', change: '2%', period: '3yr average', trend: 'down', chipColor: 'var(--color-success)' },
+  { label: 'Recycle rate', value: '2.5%', change: '2%', period: '3yr average', trend: 'down', chipColor: 'var(--color-success)' },
+  { label: 'Vulnerable rate', value: '10%', change: '2%', period: '3yr average', trend: 'down', chipColor: 'var(--color-success)' },
+  { label: 'attrition', value: '5.1%', change: '2%', period: '3yr average', trend: 'down', chipColor: 'var(--color-error)' },
+  { label: 'graduates', value: '93%', change: '2%', period: '3yr average', trend: 'down', chipColor: 'var(--color-error)' }
 ]
 
 // Chart configurations
 const chartConfigs = [
-  { dataKey: 'attrition', title: 'Attrition', color: '#3B4960' },
-  { dataKey: 'recycles', title: 'Recycles', color: '#3B4960' },
-  { dataKey: 'onTimeRate', title: 'On-Time Rate', color: '#3B4960' },
-  { dataKey: 'competencies', title: 'Competencies', color: '#3B4960' },
-  { dataKey: 'disciplineIssues', title: 'Discipline Issues', color: '#3B4960' },
-  { dataKey: 'misconductNumbers', title: 'Misconduct Numbers', color: '#3B4960' },
-  { dataKey: 'misconductNumbers', title: 'Misconduct Numbers', color: '#3B4960' },
-  { dataKey: 'complaints', title: 'Complaints', color: '#3B4960' },
-  { dataKey: 'injuryCount', title: 'Injury Count', color: '#3B4960' },
-  { dataKey: 'illnessCount', title: 'Illness Count', color: '#3B4960' },
-  { dataKey: 'physicalFitness', title: 'Physical Fitness', color: '#3B4960' },
-  { dataKey: 'mtiPerformance', title: 'MTI Performance', color: '#3B4960' }
+  { dataKey: 'attrition', title: 'attrition', color: '#3b4960' },
+  { dataKey: 'recycles', title: 'recycles', color: '#3b4960' },
+  { dataKey: 'onTimeRate', title: 'On-Time Rate', color: '#3b4960' },
+  { dataKey: 'competencies', title: 'competencies', color: '#3b4960' },
+  { dataKey: 'disciplineIssues', title: 'Discipline issues', color: '#3b4960' },
+  { dataKey: 'misconductNumbers', title: 'Misconduct numbers', color: '#3b4960' },
+  { dataKey: 'misconductNumbers', title: 'Misconduct numbers', color: '#3b4960' },
+  { dataKey: 'complaints', title: 'complaints', color: '#3b4960' },
+  { dataKey: 'injuryCount', title: 'Injury count', color: '#3b4960' },
+  { dataKey: 'illnessCount', title: 'Illness count', color: '#3b4960' },
+  { dataKey: 'physicalFitness', title: 'Physical fitness', color: '#3b4960' },
+  { dataKey: 'mtiPerformance', title: 'MTI Performance', color: '#3b4960' }
 ]
 
 function PerformanceChart({ dataKey, title, color }) {
@@ -96,7 +93,7 @@ function PerformanceChart({ dataKey, title, color }) {
         <Box sx={{ flex: 1, minHeight: 200 }}>
           <ResponsiveContainer width="100%" height="100%">
             <ComposedChart data={data}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border-primary)" />
               <XAxis 
                 dataKey="month" 
                 tick={{ fontSize: 12, fill: 'var(--color-text-secondary)' }}
@@ -105,7 +102,7 @@ function PerformanceChart({ dataKey, title, color }) {
               <YAxis 
                 tick={{ fontSize: 12, fill: 'var(--color-text-secondary)' }}
                 axisLine={{ stroke: 'var(--color-border-primary)' }}
-                label={{ value: 'Count', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fill: 'var(--color-text-secondary)' } }}
+                label={{ value: 'count', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fill: 'var(--color-text-secondary)' } }}
               />
               <Tooltip 
                 contentStyle={{
@@ -118,7 +115,7 @@ function PerformanceChart({ dataKey, title, color }) {
               <Line 
                 type="monotone" 
                 dataKey="annualAverage" 
-                stroke="#d32f2f" 
+                stroke="var(--color-error)" 
                 strokeWidth={2}
                 dot={false}
               />
@@ -132,39 +129,52 @@ function PerformanceChart({ dataKey, title, color }) {
 
 function KeyMetricCard({ metric }) {
   const TrendIcon = metric.trend === 'down' ? TrendingDownOutlined : TrendingUpOutlined
-  const trendColor = metric.trend === 'down' ? '#d32f2f' : '#388e3c'
 
   return (
     <Card sx={{ 
       borderRadius: 'var(--radius-lg)',
       border: '1px solid var(--color-border-primary)',
-      height: '100%'
+      height: '100%',
+      backgroundColor: 'white'
     }}>
       <CardContent sx={{ p: 3, textAlign: 'center' }}>
-        <Typography variant="h4" sx={{ 
-          fontWeight: 700, 
+        <Typography variant="h6" sx={{ 
+          fontWeight: 600, 
           color: 'var(--color-text-primary)',
-          mb: 1
+          mb: 0.5,
+          fontSize: '1rem'
         }}>
-          {metric.value}
+          {metric.label}
         </Typography>
         <Typography variant="body2" sx={{ 
           color: 'var(--color-text-secondary)',
           mb: 2,
-          fontSize: '0.9rem'
+          fontSize: '0.8rem'
         }}>
-          {metric.label}
+          This month
         </Typography>
-        <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.5}>
-          <TrendIcon sx={{ color: trendColor, fontSize: 16 }} />
-          <Typography variant="caption" sx={{ 
-            color: trendColor,
+        <Typography variant="h4" sx={{ 
+          fontWeight: 700, 
+          color: 'var(--color-text-primary)',
+          mb: 2
+        }}>
+          {metric.value}
+        </Typography>
+        <Chip
+          icon={<TrendIcon sx={{ fontSize: 14 }} />}
+          label={`${metric.change}% ${metric.period}`}
+          sx={{
+            backgroundColor: metric.chipColor,
+            color: 'white',
             fontWeight: 600,
-            fontSize: '0.8rem'
-          }}>
-            {metric.change} {metric.period}
-          </Typography>
-        </Stack>
+            fontSize: '0.75rem',
+            height: 24,
+            '& .MuiChip-icon': {
+              color: 'white',
+              fontSize: 14
+            }
+          }}
+        />
       </CardContent>
     </Card>
   )
@@ -197,13 +207,6 @@ function LeadershipBoard() {
 
       {/* Key Metrics Summary */}
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h6" sx={{ 
-          fontWeight: 600, 
-          color: 'var(--color-text-primary)',
-          mb: 2
-        }}>
-          This month
-        </Typography>
         <Grid container spacing={2}>
           {keyMetrics.map((metric, index) => (
             <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
@@ -216,7 +219,7 @@ function LeadershipBoard() {
       {/* Key Metrics Over Time Section */}
       <Box sx={{ mb: 3 }}>
         <Box sx={{ 
-          backgroundColor: '#1e3a8a', 
+          backgroundColor: 'var(--color-primary)', 
           color: 'white', 
           p: 2, 
           borderRadius: 'var(--radius-md)',
@@ -236,7 +239,7 @@ function LeadershipBoard() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#1e3a8a',
+            color: 'var(--color-primary)',
             fontWeight: 'bold',
             fontSize: '0.9rem'
           }}>
@@ -244,7 +247,7 @@ function LeadershipBoard() {
           </Box>
         </Box>
         <Box sx={{ 
-          backgroundColor: '#3b82f6', 
+          backgroundColor: 'var(--color-secondary)', 
           color: 'white', 
           p: 1.5, 
           borderRadius: 'var(--radius-md)',
